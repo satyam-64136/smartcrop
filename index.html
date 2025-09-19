@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroSmart - Crop Recommendation System</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    <style>
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(56, 163, 165, 0.9) 0%, rgba(34, 139, 34, 0.9) 100%);
+        }
+        .crop-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .input-range {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e2e8f0;
+            outline: none;
+        }
+        .input-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #38a169;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <i data-feather="sun" class="text-green-600 mr-2"></i>
+                    <span class="text-xl font-bold text-green-600">AgroSmart</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-green-600 font-medium">Home</a>
+                    <a href="#features" class="text-gray-600 hover:text-green-600 transition">Features</a>
+                    <a href="#recommend" class="text-gray-600 hover:text-green-600 transition">Recommendation</a>
+                    <a href="#about" class="text-gray-600 hover:text-green-600 transition">About</a>
+                </div>
+                <button class="md:hidden text-gray-600">
+                    <i data-feather="menu"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div id="hero" class="hero-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex items-center justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Smart Crop Recommendations</h1>
+                    <p class="text-xl mb-8">Get personalized crop suggestions based on your soil, climate, and location data for maximum yield.</p>
+                    <a href="#recommend" class="bg-white text-green-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition duration-300 inline-block">
+                        Get Recommendation
+                    </a>
+                </div>
+                <div class="md:w-1/2" data-aos="fade-left">
+                    <img src="http://static.photos/agriculture/1024x576/1" alt="Farm field" class="rounded-lg shadow-xl">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Why Choose Our System</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our AI-powered system analyzes multiple factors to provide the best crop recommendations for your specific conditions.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i data-feather="cpu" class="text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">AI-Powered Analysis</h3>
+                    <p class="text-gray-600">Advanced machine learning algorithms process your data to provide accurate recommendations.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-xl" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i data-feather="database" class="text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Comprehensive Database</h3>
+                    <p class="text-gray-600">Access to thousands of crop varieties and their optimal growing conditions.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-xl" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i data-feather="map" class="text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Location-Specific</h3>
+                    <p class="text-gray-600">Recommendations tailored to your exact geographic location and microclimate.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendation Form -->
+    <div id="recommend" class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white p-8 rounded-xl shadow-md" data-aos="fade-up">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Get Your Crop Recommendation</h2>
+                
+                <form id="recommendationForm" class="space-y-6">
+                    <div>
+                        <label for="location" class="block text-sm font-medium text-gray-700 mb-1">Location</label>
+                        <input type="text" id="location" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500" placeholder="Enter your location">
+                    </div>
+                    
+                    <div>
+                        <label for="soilType" class="block text-sm font-medium text-gray-700 mb-1">Soil Type</label>
+                        <select id="soilType" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                            <option value="">Select soil type</option>
+                            <option value="clay">Clay</option>
+                            <option value="sandy">Sandy</option>
+                            <option value="loamy">Loamy</option>
+                            <option value="silty">Silty</option>
+                            <option value="peaty">Peaty</option>
+                            <option value="chalky">Chalky</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="phLevel" class="block text-sm font-medium text-gray-700 mb-1">Soil pH Level</label>
+                        <input type="range" id="phLevel" min="3" max="10" step="0.1" value="6.5" class="input-range">
+                        <div class="flex justify-between text-xs text-gray-500 mt-1">
+                            <span>3 (Acidic)</span>
+                            <span>6.5 (Neutral)</span>
+                            <span>10 (Alkaline)</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="rainfall" class="block text-sm font-medium text-gray-700 mb-1">Average Annual Rainfall (mm)</label>
+                        <input type="number" id="rainfall" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500" placeholder="Enter rainfall in mm">
+                    </div>
+                    
+                    <div>
+                        <label for="temperature" class="block text-sm font-medium text-gray-700 mb-1">Average Temperature (°C)</label>
+                        <input type="number" id="temperature" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500" placeholder="Enter average temperature">
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700 transition duration-300 flex items-center justify-center">
+                        <i data-feather="search" class="mr-2"></i> Get Recommendations
+                    </button>
+                </form>
+                
+                <div id="results" class="mt-8 hidden">
+                    <h3 class="text-xl font-semibold mb-4">Recommended Crops</h3>
+                    <div class="grid md:grid-cols-2 gap-4" id="cropResults">
+                        <!-- Results will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
+                    <img src="http://static.photos/technology/1024x576/2" alt="Technology in agriculture" class="rounded-lg shadow-xl">
+                </div>
+                <div class="md:w-1/2 md:pl-12" data-aos="fade-left">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">About AgroSmart</h2>
+                    <p class="text-gray-600 mb-6">AgroSmart is an innovative platform that leverages artificial intelligence and agricultural science to help farmers make informed decisions about crop selection.</p>
+                    <p class="text-gray-600 mb-6">Our system combines local weather patterns, soil conditions, and historical yield data to provide personalized recommendations that maximize your farm's productivity.</p>
+                    <div class="flex space-x-4">
+                        <div class="bg-green-100 p-4 rounded-lg">
+                            <i data-feather="users" class="text-green-600 mb-2"></i>
+                            <p class="font-medium">5000+ Farmers</p>
+                        </div>
+                        <div class="bg-green-100 p-4 rounded-lg">
+                            <i data-feather="bar-chart-2" class="text-green-600 mb-2"></i>
+                            <p class="font-medium">30% Yield Increase</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i data-feather="sun" class="text-green-400 mr-2"></i>
+                        <span class="text-xl font-bold">AgroSmart</span>
+                    </div>
+                    <p class="text-gray-400">Empowering farmers with intelligent crop recommendations for sustainable agriculture.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition">Features</a></li>
+                        <li><a href="#recommend" class="text-gray-400 hover:text-white transition">Recommendation</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i data-feather="mail" class="mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">contact@agrosmart.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="phone" class="mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">+1 (555) 123-4567</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i data-feather="facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i data-feather="twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i data-feather="instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i data-feather="linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 AgroSmart. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Initialize Feather Icons
+        feather.replace();
+
+        // Form submission handler
+        document.getElementById('recommendationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = document.querySelector('#recommendationForm button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i data-feather="loader" class="animate-spin mr-2"></i> Analyzing...';
+            feather.replace();
+            
+            // Simulate API call with timeout
+            setTimeout(() => {
+                // Hide loading state
+                submitBtn.innerHTML = originalBtnText;
+                feather.replace();
+                
+                // Show results
+                const resultsDiv = document.getElementById('results');
+                resultsDiv.classList.remove('hidden');
+                
+                // Populate mock results (in a real app, this would come from an API)
+                const cropResults = document.getElementById('cropResults');
+                cropResults.innerHTML = '';
+                
+                const mockCrops = [
+                    { name: 'Wheat', suitability: 'High', image: 'http://static.photos/agriculture/320x240/10' },
+                    { name: 'Corn', suitability: 'Medium', image: 'http://static.photos/agriculture/320x240/11' },
+                    { name: 'Soybeans', suitability: 'High', image: 'http://static.photos/agriculture/320x240/12' },
+                    { name: 'Barley', suitability: 'Medium', image: 'http://static.photos/agriculture/320x240/13' }
+                ];
+                
+                mockCrops.forEach(crop => {
+                    const cropCard = document.createElement('div');
+                    cropCard.className = 'bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm crop-card transition duration-300';
+                    cropCard.innerHTML = `
+                        <img src="${crop.image}" alt="${crop.name}" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <h4 class="font-semibold text-lg mb-1">${crop.name}</h4>
+                            <span class="inline-block px-2 py-1 text-xs rounded-full ${crop.suitability === 'High' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}">
+                                ${crop.suitability} Suitability
+                            </span>
+                            <button class="mt-3 text-sm text-green-600 hover:text-green-800 font-medium flex items-center">
+                                View Details <i data-feather="chevron-right" class="w-4 h-4 ml-1"></i>
+                            </button>
+                        </div>
+                    `;
+                    cropResults.appendChild(cropCard);
+                });
+                
+                feather.replace();
+                
+                // Scroll to results
+                resultsDiv.scrollIntoView({ behavior: 'smooth' });
+            }, 1500);
+        });
+
+        // Vanta.js background for hero section
+        VANTA.GLOBE({
+            el: "#hero",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x38a169,
+            backgroundColor: 0x38a169,
+            size: 0.8,
+            amplitudeFactor: 2.5
+        });
+    </script>
+</body>
+</html>
