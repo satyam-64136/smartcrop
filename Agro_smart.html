@@ -3,94 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KrishiMitra - Smart Farming Solutions</title>
+    <title>KrishiMitra - Your Farming Partner</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #2E7D32;
-            --primary-light: #E8F5E8;
-            --secondary: #F9A825;
-            --text: #333333;
-            --text-light: #666666;
-            --white: #FFFFFF;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            --border-radius: 12px;
-            --transition: all 0.3s ease;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
-
         body {
-            background-color: #FAFAF8;
-            color: var(--text);
+            background-color: #F8F9FA;
+            color: #333333;
             line-height: 1.6;
             overflow-x: hidden;
+            padding-top: 80px;
         }
-
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
-
         /* Navigation */
         nav {
-            background-color: var(--white);
-            box-shadow: var(--shadow);
+            background-color: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: 0.5rem 0;
+            padding: 0.8rem 0;
         }
-
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 1.5rem;
         }
-
         .logo {
             display: flex;
             align-items: center;
-            font-size: 1.7rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            color: var(--primary);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            color: #4CAF50;
         }
-
         .logo i {
             margin-right: 0.5rem;
-            color: var(--primary);
-            font-size: 2rem;
+            color: #4CAF50;
+            font-size: 2.2rem;
         }
-
         .nav-links {
             display: flex;
             list-style: none;
             gap: 2rem;
         }
-
         .nav-links a {
             text-decoration: none;
-            color: var(--text);
+            color: #333333;
             font-weight: 500;
             padding: 0.7rem 0;
             position: relative;
-            transition: var(--transition);
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
         }
-
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -98,81 +78,73 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--secondary);
-            transition: var(--transition);
+            background-color: #FF9800;
+            transition: all 0.3s ease;
         }
-
         .nav-links a:hover::after {
             width: 100%;
         }
-
         .nav-links a.active {
-            color: var(--secondary);
+            color: #FF9800;
+            font-weight: 600;
         }
-
         .nav-links a.active::after {
             width: 100%;
         }
-
         .hamburger {
             display: none;
             cursor: pointer;
-            font-size: 1.5rem;
-            color: var(--primary);
+            font-size: 1.6rem;
+            color: #4CAF50;
         }
-
         .auth-buttons {
             display: flex;
             gap: 1rem;
+            align-items: center;
         }
-
         .btn-primary {
-            padding: 0.6rem 1.2rem;
-            background-color: var(--primary);
-            color: var(--white);
+            padding: 0.7rem 1.5rem;
+            background-color: #4CAF50;
+            color: #FFFFFF;
             border: none;
-            border-radius: var(--border-radius);
+            border-radius: 16px;
             font-weight: 600;
-            transition: var(--transition);
+            transition: all 0.3s ease;
             cursor: pointer;
+            font-size: 0.95rem;
         }
-
         .btn-primary:hover {
-            background-color: #1B5E20;
+            background-color: #2E7D32;
             transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
         .btn-outline {
-            padding: 0.6rem 1.2rem;
+            padding: 0.7rem 1.5rem;
             background-color: transparent;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            border-radius: var(--border-radius);
+            color: #4CAF50;
+            border: 1px solid #4CAF50;
+            border-radius: 16px;
             font-weight: 600;
-            transition: var(--transition);
+            transition: all 0.3s ease;
             cursor: pointer;
+            font-size: 0.95rem;
         }
-
         .btn-outline:hover {
-            background-color: var(--primary);
-            color: var(--white);
+            background-color: rgba(76, 175, 80, 0.1);
         }
-
         /* Hero Section */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(135deg, rgba(46, 125, 50, 0.8) 0%, rgba(249, 168, 37, 0.6) 100%),
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.8) 0%, rgba(249, 168, 37, 0.6) 100%),
                         url('https://images.unsplash.com/photo-1591623586301-8b4d2a83a43f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
             background-size: cover;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: var(--white);
-            padding: 1rem;
-            position: relative;
+            color: #FFFFFF;
+            padding: 2rem;
         }
-
         .hero::before {
             content: '';
             position: absolute;
@@ -182,192 +154,351 @@
             bottom: 0;
             background: rgba(0, 0, 0, 0.3);
         }
-
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 800px;
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 2rem;
         }
-
         .hero h1 {
             font-size: 3.5rem;
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 1.5rem;
-            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            line-height: 1.1;
+            background: linear-gradient(90deg, #FFFFFF 0%, #C8E6C9 50%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             margin-bottom: 2.5rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            color: #f8f9fa;
             line-height: 1.6;
         }
-
         .hero-cta {
             display: inline-block;
-            padding: 1rem 2.5rem;
-            background-color: var(--secondary);
-            color: var(--primary);
+            padding: 1.2rem 2.8rem;
+            background-color: #FF9800;
+            color: #4CAF50;
             border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 600;
+            font-size: 1.3rem;
+            font-weight: 700;
             text-decoration: none;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            border: 2px solid var(--primary);
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            border: 2px solid #FFFFFF;
+            margin-bottom: 2rem;
         }
-
         .hero-cta:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-            background-color: var(--primary);
-            color: var(--white);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            background-color: #FFFFFF;
+            color: #4CAF50;
         }
-
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            margin-top: 2rem;
+            border: 3px solid #FFFFFF;
+        }
         /* Features Section */
         .section {
             padding: 5rem 0;
         }
-
         .section-title {
             text-align: center;
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: var(--primary);
+            color: #4CAF50;
         }
-
         .section-subtitle {
             text-align: center;
             font-size: 1.2rem;
-            color: var(--text-light);
+            color: #666666;
             margin-bottom: 4rem;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
-
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
+            gap: 2rem;
+            justify-content: center;
         }
-
         .feature-card {
-            background-color: var(--white);
+            background-color: #FFFFFF;
             padding: 2.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             text-align: center;
-            transition: var(--transition);
+            transition: all 0.3s ease;
             border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
         }
-
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #4CAF50, #FF9800);
+        }
         .feature-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
             border-color: rgba(0, 0, 0, 0.1);
         }
-
         .feature-icon {
-            width: 80px;
-            height: 80px;
-            background-color: var(--primary-light);
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #C8E6C9, #4CAF50);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
-
+        .feature-icon::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+        }
         .feature-card h3 {
             font-size: 1.5rem;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 1rem;
-            color: var(--primary);
+            color: #4CAF50;
         }
-
         .feature-card p {
-            color: var(--text-light);
+            color: #666666;
             line-height: 1.6;
         }
-
         /* Quick Access Section */
         .quick-access {
-            background-color: var(--primary-light);
-            padding: 4rem 0;
+            background-color: #C8E6C9;
+            padding: 5rem 0;
         }
-
         .quick-access-title {
             text-align: center;
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 3rem;
-            color: var(--primary);
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #4CAF50;
         }
-
+        .quick-access-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #666666;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
         .quick-access-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
+            justify-content: center;
         }
-
         .quick-access-card {
-            background-color: var(--white);
+            background-color: #FFFFFF;
             padding: 2rem;
-            border-radius: var(--border-radius);
+            border-radius: 16px;
             text-align: center;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
         }
-
+        .quick-access-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60px;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(249, 168, 37, 0.1));
+        }
         .quick-access-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
         }
-
         .quick-access-icon {
-            width: 70px;
-            height: 70px;
-            background-color: rgba(46, 125, 50, 0.1);
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(249, 168, 37, 0.2), rgba(76, 175, 80, 0.2));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
-            color: var(--primary);
-            font-size: 2rem;
+            color: #4CAF50;
+            font-size: 2.2rem;
+            border: 2px dashed rgba(76, 175, 80, 0.3);
         }
-
         .quick-access-card h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
+            font-size: 1.4rem;
+            font-weight: 700;
             margin-bottom: 1rem;
-            color: var(--primary);
+            color: #4CAF50;
         }
-
         .quick-access-card p {
-            color: var(--text-light);
+            color: #666666;
             line-height: 1.6;
         }
-
+        /* How It Works */
+        .how-it-works {
+            background-color: #FFFFFF;
+            padding: 5rem 0;
+        }
+        .how-it-works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            justify-content: center;
+        }
+        .how-it-works-card {
+            text-align: center;
+            padding: 2rem;
+        }
+        .how-it-works-icon {
+            width: 96px;
+            height: 96px;
+            background-color: #C8E6C9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        .how-it-works-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+        }
+        .how-it-works-card p {
+            color: #666666;
+            line-height: 1.6;
+        }
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+            padding: 5rem 0;
+            color: #FFFFFF;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon fill="rgba(255,255,255,0.03)" points="0,0 100,0 50,50"/></svg>') repeat;
+            animation: float 15s linear infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        .cta-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+        .cta-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .cta-btn-primary {
+            padding: 1rem 2.5rem;
+            background-color: #FF9800;
+            color: #4CAF50;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .cta-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+            background-color: #FFFFFF;
+            color: #4CAF50;
+        }
+        .cta-btn-secondary {
+            padding: 1rem 2.5rem;
+            background-color: transparent;
+            color: #FFFFFF;
+            border: 2px solid #FFFFFF;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .cta-btn-secondary:hover {
+            background-color: #FFFFFF;
+            color: #4CAF50;
+        }
+        .cta-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            margin-top: 2rem;
+        }
         /* Footer */
         footer {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 3rem 0 1.5rem;
+            background-color: #2E7D32;
+            color: #FFFFFF;
+            padding: 3rem 0 0;
+            width: 100%;
         }
-
+        .footer-content {
+            padding: 3rem 0;
+        }
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2.5rem;
+            gap: 2rem;
             margin-bottom: 2.5rem;
+            justify-items: center;
         }
-
         .footer-column h4 {
             font-size: 1.3rem;
             font-weight: 600;
@@ -375,7 +506,6 @@
             position: relative;
             padding-bottom: 0.5rem;
         }
-
         .footer-column h4::after {
             content: '';
             position: absolute;
@@ -383,74 +513,72 @@
             left: 0;
             width: 50px;
             height: 2px;
-            background-color: var(--secondary);
+            background-color: #FF9800;
         }
-
         .footer-column ul {
             list-style: none;
+            text-align: center;
         }
-
         .footer-column ul li {
             margin-bottom: 0.8rem;
         }
-
         .footer-column ul li a {
-            color: var(--white);
+            color: #FFFFFF;
             text-decoration: none;
             transition: color 0.3s;
+            opacity: 0.9;
         }
-
         .footer-column ul li a:hover {
-            color: var(--secondary);
+            color: #FF9800;
+            opacity: 1;
         }
-
         .contact-info {
             display: flex;
             align-items: center;
             margin-bottom: 1rem;
+            justify-content: center;
         }
-
         .contact-info i {
             margin-right: 0.8rem;
-            color: var(--secondary);
+            color: #FF9800;
+            font-size: 1.1rem;
         }
-
         .social-links {
             display: flex;
             gap: 1.2rem;
             margin-top: 1.5rem;
+            justify-content: center;
         }
-
         .social-links a {
-            color: var(--white);
-            font-size: 1.5rem;
+            color: #FFFFFF;
+            font-size: 1.4rem;
             transition: all 0.3s;
+            opacity: 0.9;
         }
-
         .social-links a:hover {
-            color: var(--secondary);
+            color: #FF9800;
             transform: translateY(-3px);
+            opacity: 1;
         }
-
         .copyright {
             text-align: center;
-            padding-top: 1.5rem;
+            padding: 1.5rem 0;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             font-size: 0.9rem;
             opacity: 0.8;
+            background-color: #1B5E20;
         }
-
         .hackathon-badge {
             display: inline-block;
-            background-color: var(--secondary);
-            color: var(--primary);
-            padding: 0.3rem 0.8rem;
+            background-color: #FF9800;
+            color: #4CAF50;
+            padding: 0.4rem 1rem;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             font-weight: 600;
             margin-top: 0.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-
         /* Mobile Menu */
         .mobile-menu {
             display: none;
@@ -458,76 +586,100 @@
             top: 70px;
             left: 0;
             right: 0;
-            background-color: var(--white);
+            background-color: #FFFFFF;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             z-index: 999;
             padding: 1rem 0;
         }
-
         .mobile-menu.active {
             display: block;
         }
-
         .mobile-menu-links {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
             padding: 0 1.5rem;
         }
-
         .mobile-menu-links a {
-            padding: 0.7rem 1rem;
-            color: var(--text);
+            padding: 0.8rem 1rem;
+            color: #333333;
             text-decoration: none;
             transition: all 0.2s;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            text-align: center;
         }
-
+        .mobile-menu-links a:last-child {
+            border-bottom: none;
+        }
         .mobile-menu-links a:hover {
-            background-color: rgba(46, 125, 50, 0.1);
-            color: var(--primary);
+            background-color: rgba(76, 175, 80, 0.1);
+            color: #4CAF50;
         }
-
+        .mobile-menu-links a.active {
+            background-color: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+            font-weight: 600;
+        }
         .mobile-auth-buttons {
             display: flex;
             flex-direction: column;
             gap: 0.8rem;
-            padding: 1rem 1.5rem 0;
+            padding: 1rem 1.5rem 1.5rem;
         }
-
+        .mobile-auth-buttons .btn-primary,
+        .mobile-auth-buttons .btn-outline {
+            width: 100%;
+        }
         /* Responsive Design */
         @media (max-width: 768px) {
             .hamburger {
                 display: block;
             }
-
             .nav-links {
                 display: none;
             }
-
             .auth-buttons {
                 display: none;
             }
-
             .hero h1 {
                 font-size: 2.5rem;
             }
-
             .hero p {
                 font-size: 1.1rem;
             }
-
             .section-title {
                 font-size: 2rem;
             }
-
-            .features-grid {
+            .features-grid,
+            .quick-access-grid,
+            .how-it-works-grid {
                 grid-template-columns: 1fr;
             }
-
-            .quick-access-grid {
-                grid-template-columns: 1fr;
+            .cta-title {
+                font-size: 2rem;
+            }
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn-primary,
+            .btn-outline {
+                width: 100%;
+                margin-bottom: 0.5rem;
             }
         }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
     </style>
 </head>
 <body>
@@ -535,179 +687,380 @@
     <nav>
         <div class="nav-container">
             <div class="logo">
-                <i class="fas fa-leaf"></i>
-                <span>KrishiMitra</span>
+                <i class="fas fa-tractor"></i>
+                <span class="lang-logo">KrishiMitra</span>
             </div>
-
             <ul class="nav-links">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#quick-access">Quick Access</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" class="active lang-home">Home</a></li>
+                <li><a href="#features" class="lang-features">Features</a></li>
+                <li><a href="#tools" class="lang-tools">Tools</a></li>
+                <li><a href="#contact" class="lang-contact">Contact</a></li>
             </ul>
-
             <div class="auth-buttons">
-                <button class="btn-outline">Login</button>
-                <button class="btn-primary">Sign Up</button>
+                <button class="btn-outline lang-toggle" id="lang-toggle">🌐 हिन्दी</button>
+                <button class="btn-outline lang-login">Login</button>
+                <button class="btn-primary lang-start-free">Start Free</button>
             </div>
-
             <div class="hamburger" id="hamburger">
                 <i class="fas fa-bars"></i>
             </div>
         </div>
-
         <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobile-menu">
             <div class="mobile-menu-links">
-                <a href="#home" class="active">Home</a>
-                <a href="#features">Features</a>
-                <a href="#quick-access">Quick Access</a>
-                <a href="#contact">Contact</a>
+                <a href="#home" class="active lang-home">Home</a>
+                <a href="#features" class="lang-features">Features</a>
+                <a href="#tools" class="lang-tools">Tools</a>
+                <a href="#contact" class="lang-contact">Contact</a>
             </div>
             <div class="mobile-auth-buttons">
-                <button class="btn-outline w-full">Login</button>
-                <button class="btn-primary w-full">Sign Up</button>
+                <button class="btn-outline w-full lang-toggle" id="mobile-lang-toggle">🌐 हिन्दी</button>
+                <button class="btn-outline w-full lang-login">Login</button>
+                <button class="btn-primary w-full lang-start-free">Start Free</button>
             </div>
         </div>
     </nav>
-
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Smart Farming Made Simple</h1>
-            <p>Get personalized crop recommendations and expert farming advice in your language to maximize your yield and sustainability</p>
-            <a href="#quick-access" class="hero-cta">Explore Features</a>
+            <h1 class="fade-in lang-hero-title">Your Personal Farming Assistant</h1>
+            <p class="fade-in delay-1 lang-hero-subtitle">Get easy-to-understand farming advice in your language, using simple technology that works even on basic phones</p>
+            <a href="#tools" class="hero-cta fade-in delay-2 lang-hero-cta">See How It Works</a>
+            <div class="fade-in delay-3">
+                <img src="https://images.unsplash.com/photo-1591623586301-8b4d2a83a43f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+                     alt="Happy Indian farmer with mobile phone"
+                     class="hero-image">
+            </div>
         </div>
     </section>
-
     <!-- Features Section -->
     <section id="features" class="section">
         <div class="container">
-            <h2 class="section-title">Why Farmers Love KrishiMitra</h2>
-            <p class="section-subtitle">Our platform provides everything you need to make informed farming decisions with confidence</p>
-
+            <h2 class="section-title fade-in lang-features-title">Designed For Indian Farmers</h2>
+            <p class="section-subtitle fade-in delay-1 lang-features-subtitle">Simple tools that work on any phone, in your language, with no technical knowledge needed</p>
             <div class="features-grid">
-                <div class="feature-card">
+                <div class="feature-card fade-in delay-1">
                     <div class="feature-icon">
-                        <i class="fas fa-brain fa-2x" style="color: var(--primary);"></i>
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3>AI-Powered Recommendations</h3>
-                    <p>Get scientifically accurate crop suggestions based on your soil, weather, and location data</p>
+                    <h3 class="lang-feature-1-title">Works on Any Phone</h3>
+                    <p class="lang-feature-1-subtitle">No smartphone needed. Our service works on basic feature phones via SMS and voice calls</p>
                 </div>
-
-                <div class="feature-card">
+                <div class="feature-card fade-in delay-2">
                     <div class="feature-icon">
-                        <i class="fas fa-language fa-2x" style="color: var(--primary);"></i>
+                        <i class="fas fa-language"></i>
                     </div>
-                    <h3>Multi-Language Support</h3>
-                    <p>Access all information in your preferred language with simple, easy-to-understand terms</p>
+                    <h3 class="lang-feature-2-title">Your Local Language</h3>
+                    <p class="lang-feature-2-subtitle">Get information in Hindi, Tamil, Telugu, Marathi, Bengali, and other Indian languages</p>
                 </div>
-
-                <div class="feature-card">
+                <div class="feature-card fade-in delay-3">
                     <div class="feature-icon">
-                        <i class="fas fa-mobile-alt fa-2x" style="color: var(--primary);"></i>
+                        <i class="fas fa-seedling"></i>
                     </div>
-                    <h3>Mobile-Friendly Design</h3>
-                    <p>Use our platform anytime, anywhere with our optimized mobile experience</p>
+                    <h3 class="lang-feature-3-title">Practical Advice</h3>
+                    <p class="lang-feature-3-subtitle">Simple, actionable recommendations based on your local weather and soil conditions</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Quick Access Section -->
-    <section id="quick-access" class="quick-access">
+    <!-- Quick Access Tools -->
+    <section id="tools" class="quick-access">
         <div class="container">
-            <h2 class="quick-access-title">Quick Access Tools</h2>
-
+            <h2 class="quick-access-title fade-in lang-tools-title">Simple Tools for Better Farming</h2>
+            <p class="quick-access-subtitle fade-in delay-1 lang-tools-subtitle">Get instant access to the information you need, when you need it</p>
             <div class="quick-access-grid">
-                <div class="quick-access-card">
+                <div class="quick-access-card fade-in delay-1">
                     <div class="quick-access-icon">
                         <i class="fas fa-cloud-sun-rain"></i>
                     </div>
-                    <h3>Weather Updates</h3>
-                    <p>Get real-time weather forecasts and alerts for your location to plan your farming activities</p>
+                    <h3 class="lang-tool-1-title">Weather Alerts</h3>
+                    <p class="lang-tool-1-subtitle">Get 3-day weather forecasts for your village by SMS or voice call</p>
                 </div>
-
-                <div class="quick-access-card">
+                <div class="quick-access-card fade-in delay-2">
                     <div class="quick-access-icon">
-                        <i class="fas fa-chart-line"></i>
+                        <i class="fas fa-coins"></i>
                     </div>
-                    <h3>Market Prices</h3>
-                    <p>Stay updated with current market prices for crops in your region to make better selling decisions</p>
+                    <h3 class="lang-tool-2-title">Market Prices</h3>
+                    <p class="lang-tool-2-subtitle">Check today's prices for your crops at nearby mandis before you sell</p>
                 </div>
-
-                <div class="quick-access-card">
+                <div class="quick-access-card fade-in delay-3">
                     <div class="quick-access-icon">
-                        <i class="fas fa-book-open"></i>
+                        <i class="fas fa-question-circle"></i>
                     </div>
-                    <h3>Crop Information</h3>
-                    <p>Access detailed information about different crops, their requirements, and best practices</p>
+                    <h3 class="lang-tool-3-title">Ask an Expert</h3>
+                    <p class="lang-tool-3-subtitle">Get free advice from agricultural experts in your language</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer id="contact">
+    <!-- How It Works -->
+    <section class="how-it-works">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <div class="logo" style="color: white; margin-bottom: 1.5rem; justify-content: flex-start;">
-                        <i class="fas fa-leaf"></i>
-                        <span>KrishiMitra</span>
+            <h2 class="section-title fade-in lang-how-it-works-title">How It Works</h2>
+            <p class="section-subtitle fade-in delay-1 lang-how-it-works-subtitle">3 easy steps to get farming advice</p>
+            <div class="how-it-works-grid">
+                <div class="how-it-works-card fade-in delay-1">
+                    <div class="how-it-works-icon">
+                        <i class="fas fa-mobile-alt text-[#4CAF50] text-3xl"></i>
                     </div>
-                    <p style="margin-bottom: 1rem;">Empowering Indian farmers with smart agricultural solutions</p>
-                    <div class="hackathon-badge">Made for SIH 2025</div>
+                    <h3 class="lang-step-1-title">Step 1: Register</h3>
+                    <p class="lang-step-1-subtitle">Sign up with your phone number (works on any phone)</p>
                 </div>
-
-                <div class="footer-column">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#quick-access">Quick Access</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
+                <div class="how-it-works-card fade-in delay-2">
+                    <div class="how-it-works-icon">
+                        <i class="fas fa-comment-dots text-[#4CAF50] text-3xl"></i>
+                    </div>
+                    <h3 class="lang-step-2-title">Step 2: Tell Us About Your Farm</h3>
+                    <p class="lang-step-2-subtitle">Share your location and crop details (we'll guide you through it)</p>
                 </div>
-
-                <div class="footer-column">
-                    <h4>Contact Us</h4>
-                    <div class="contact-info">
-                        <i class="fas fa-phone-alt"></i>
-                        <span>+91 98765 43210</span>
+                <div class="how-it-works-card fade-in delay-3">
+                    <div class="how-it-works-icon">
+                        <i class="fas fa-lightbulb text-[#4CAF50] text-3xl"></i>
                     </div>
-                    <div class="contact-info">
-                        <i class="fas fa-envelope"></i>
-                        <span>support@krishimitra.com</span>
-                    </div>
-                    <div class="contact-info">
-                        <i class="fab fa-whatsapp" style="color: #25D366;"></i>
-                        <span>+91 98765 43210</span>
-                    </div>
-
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
+                    <h3 class="lang-step-3-title">Step 3: Get Advice</h3>
+                    <p class="lang-step-3-subtitle">Receive personalized recommendations by SMS or voice call</p>
                 </div>
-            </div>
-
-            <div class="copyright">
-                <p>© 2025 KrishiMitra. All rights reserved.</p>
             </div>
         </div>
+    </section>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title fade-in lang-cta-title">Ready to Try KrishiMitra?</h2>
+            <p class="cta-subtitle fade-in delay-1 lang-cta-subtitle">Join thousands of farmers who are getting better yields with simple, practical advice</p>
+            <div class="cta-buttons">
+                <a href="#" class="cta-btn-primary fade-in delay-2 lang-cta-btn-primary">Sign Up Free</a>
+                <a href="#" class="cta-btn-secondary fade-in delay-3 lang-cta-btn-secondary">Learn More</a>
+            </div>
+            <img src="https://images.unsplash.com/photo-1605170458983-618fae6cbd5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+                 alt="Farmer using mobile phone in field"
+                 class="cta-image fade-in delay-4">
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-column fade-in">
+                        <div class="logo" style="color: white; margin-bottom: 1.5rem; justify-content: flex-start;">
+                            <i class="fas fa-tractor"></i>
+                            <span class="lang-logo">KrishiMitra</span>
+                        </div>
+                        <p class="lang-footer-tagline" style="margin-bottom: 1rem;">Simple farming advice for every Indian farmer</p>
+                        <div class="hackathon-badge">Made in India 🇮🇳</div>
+                    </div>
+                    <div class="footer-column fade-in delay-1">
+                        <h4 class="lang-footer-quick-links">Quick Links</h4>
+                        <ul>
+                            <li><a href="#home" class="lang-home">Home</a></li>
+                            <li><a href="#features" class="lang-features">Features</a></li>
+                            <li><a href="#tools" class="lang-tools">Tools</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column fade-in delay-2">
+                        <h4 class="lang-footer-contact">Contact Us</h4>
+                        <div class="contact-info">
+                            <i class="fas fa-phone-alt"></i>
+                            <span class="lang-footer-call">📞 Call: 1800-123-4567</span>
+                        </div>
+                        <div class="contact-info">
+                            <i class="fas fa-comment-dots"></i>
+                            <span class="lang-footer-sms">💬 SMS: KRISHI to 56767</span>
+                        </div>
+                        <div class="contact-info">
+                            <i class="fab fa-whatsapp" style="color: #25D366;"></i>
+                            <span class="lang-footer-whatsapp">📱 WhatsApp: +91 98765 43210</span>
+                        </div>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-column fade-in delay-3">
+                        <h4 class="lang-footer-languages">Languages</h4>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; justify-content: center;">
+                            <span style="background: rgba(255,255,255,0.2); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.9rem;">हिन्दी</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.9rem;">தமிழ்</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.9rem;">తెలుగు</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.9rem;">मराठी</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.9rem;">বাংলা</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.9rem;">ગુજરાતી</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p class="lang-copyright">© 2025 KrishiMitra. Made with ♥ for Indian Farmers.</p>
+            <p class="mt-2 text-xs lang-copyright-subtitle">No smartphone needed. Works on all basic phones.</p>
+        </div>
     </footer>
-
     <script>
+        // Language Toggle
+        const langToggle = document.getElementById('lang-toggle');
+        const mobileLangToggle = document.getElementById('mobile-lang-toggle');
+        const isHindi = localStorage.getItem('isHindi') === 'true';
+
+        // Set initial language
+        if (isHindi) {
+            langToggle.textContent = '🌐 English';
+            mobileLangToggle.textContent = '🌐 English';
+            setHindi();
+        } else {
+            langToggle.textContent = '🌐 हिन्दी';
+            mobileLangToggle.textContent = '🌐 हिन्दी';
+            setEnglish();
+        }
+
+        // Toggle language
+        langToggle.addEventListener('click', () => {
+            const isHindiNow = langToggle.textContent === '🌐 हिन्दी';
+            if (isHindiNow) {
+                langToggle.textContent = '🌐 English';
+                mobileLangToggle.textContent = '🌐 English';
+                setHindi();
+                localStorage.setItem('isHindi', 'true');
+            } else {
+                langToggle.textContent = '🌐 हिन्दी';
+                mobileLangToggle.textContent = '🌐 हिन्दी';
+                setEnglish();
+                localStorage.setItem('isHindi', 'false');
+            }
+        });
+
+        mobileLangToggle.addEventListener('click', () => {
+            const isHindiNow = mobileLangToggle.textContent === '🌐 हिन्दी';
+            if (isHindiNow) {
+                langToggle.textContent = '🌐 English';
+                mobileLangToggle.textContent = '🌐 English';
+                setHindi();
+                localStorage.setItem('isHindi', 'true');
+            } else {
+                langToggle.textContent = '🌐 हिन्दी';
+                mobileLangToggle.textContent = '🌐 हिन्दी';
+                setEnglish();
+                localStorage.setItem('isHindi', 'false');
+            }
+        });
+
+        // Set Hindi
+        function setHindi() {
+            document.querySelector('.lang-logo').textContent = 'कृषि मित्र';
+            document.querySelector('.lang-home').textContent = 'होम';
+            document.querySelector('.lang-features').textContent = 'विशेषताएँ';
+            document.querySelector('.lang-tools').textContent = 'उपकरण';
+            document.querySelector('.lang-contact').textContent = 'संपर्क';
+            document.querySelector('.lang-login').textContent = 'लॉगिन';
+            document.querySelector('.lang-start-free').textContent = 'मुफ्त शुरू करें';
+            document.querySelector('.lang-hero-title').textContent = 'आपका व्यक्तिगत कृषि सहायक';
+            document.querySelector('.lang-hero-subtitle').textContent = 'अपनी भाषा में सरल तकनीक का उपयोग करके आसान कृषि सलाह प्राप्त करें, जो बेसिक फोन पर भी काम करती है';
+            document.querySelector('.lang-hero-cta').textContent = 'यह कैसे काम करता है';
+            document.querySelector('.lang-features-title').textContent = 'भारतीय किसानों के लिए डिज़ाइन किया गया';
+            document.querySelector('.lang-features-subtitle').textContent = 'साधन जो किसी भी फोन पर, आपकी भाषा में, बिना किसी तकनीकी ज्ञान की आवश्यकता के काम करते हैं';
+            document.querySelector('.lang-feature-1-title').textContent = 'किसी भी फोन पर काम करता है';
+            document.querySelector('.lang-feature-1-subtitle').textContent = 'स्मार्टफोन की आवश्यकता नहीं। हमारी सेवा बेसिक फीचर फोन पर एसएमएस और वॉयस कॉल के माध्यम से काम करती है';
+            document.querySelector('.lang-feature-2-title').textContent = 'आपकी स्थानीय भाषा';
+            document.querySelector('.lang-feature-2-subtitle').textContent = 'हिंदी, तमिल, तेलुगु, मराठी, बंगाली और अन्य भारतीय भाषाओं में जानकारी प्राप्त करें';
+            document.querySelector('.lang-feature-3-title').textContent = 'व्यावहारिक सलाह';
+            document.querySelector('.lang-feature-3-subtitle').textContent = 'आपके स्थानीय मौसम और मिट्टी की स्थिति के आधार पर सरल, क्रियान्वयन योग्य सिफारिशें';
+            document.querySelector('.lang-tools-title').textContent = 'बेहतर खेती के लिए सरल उपकरण';
+            document.querySelector('.lang-tools-subtitle').textContent = 'तुरंत उस जानकारी तक पहुंच प्राप्त करें जिसकी आपको आवश्यकता है, जब आपको इसकी आवश्यकता हो';
+            document.querySelector('.lang-tool-1-title').textContent = 'मौसम अलर्ट';
+            document.querySelector('.lang-tool-1-subtitle').textContent = 'एसएमएस या वॉयस कॉल के माध्यम से अपने गांव के लिए 3-दिन का मौसम पूर्वानुमान प्राप्त करें';
+            document.querySelector('.lang-tool-2-title').textContent = 'बाजार की कीमतें';
+            document.querySelector('.lang-tool-2-subtitle').textContent = 'बेचने से पहले अपने फसलों की आज की कीमतें निकटतम मंडियों में जांचें';
+            document.querySelector('.lang-tool-3-title').textContent = 'एक विशेषज्ञ से पूछें';
+            document.querySelector('.lang-tool-3-subtitle').textContent = 'अपनी भाषा में कृषि विशेषज्ञों से मुफ्त सलाह प्राप्त करें';
+            document.querySelector('.lang-how-it-works-title').textContent = 'यह कैसे काम करता है';
+            document.querySelector('.lang-how-it-works-subtitle').textContent = 'कृषि सलाह प्राप्त करने के लिए 3 आसान चरण';
+            document.querySelector('.lang-step-1-title').textContent = 'चरण 1: रजिस्टर करें';
+            document.querySelector('.lang-step-1-subtitle').textContent = 'अपने फोन नंबर से साइन अप करें (यह किसी भी फोन पर काम करता है)';
+            document.querySelector('.lang-step-2-title').textContent = 'चरण 2: अपने खेत के बारे में बताएं';
+            document.querySelector('.lang-step-2-subtitle').textContent = 'अपने स्थान और फसल विवरण साझा करें (हम आपको मार्गदर्शन करेंगे)';
+            document.querySelector('.lang-step-3-title').textContent = 'चरण 3: सलाह प्राप्त करें';
+            document.querySelector('.lang-step-3-subtitle').textContent = 'एसएमएस या वॉयस कॉल के माध्यम से व्यक्तिगत सिफारिशें प्राप्त करें';
+            document.querySelector('.lang-cta-title').textContent = 'कृषि मित्र को आज़माने के लिए तैयार?';
+            document.querySelector('.lang-cta-subtitle').textContent = 'हज़ारों किसानों में शामिल हों जो सरल, व्यावहारिक सलाह से बेहतर उपज प्राप्त कर रहे हैं';
+            document.querySelector('.lang-cta-btn-primary').textContent = 'मुफ्त साइन अप करें';
+            document.querySelector('.lang-cta-btn-secondary').textContent = 'और जानें';
+            document.querySelector('.lang-footer-tagline').textContent = 'हर भारतीय किसान के लिए सरल कृषि सलाह';
+            document.querySelector('.lang-footer-quick-links').textContent = 'त्वरित लिंक';
+            document.querySelector('.lang-footer-contact').textContent = 'संपर्क करें';
+            document.querySelector('.lang-footer-call').textContent = '📞 कॉल: 1800-123-4567';
+            document.querySelector('.lang-footer-sms').textContent = '💬 एसएमएस: KRISHI to 56767';
+            document.querySelector('.lang-footer-whatsapp').textContent = '📱 व्हाट्सएप: +91 98765 43210';
+            document.querySelector('.lang-footer-languages').textContent = 'भाषाएँ';
+            document.querySelector('.lang-copyright').textContent = '© 2025 कृषि मित्र। भारतीय किसानों के लिए ♥ से बनाया गया।';
+            document.querySelector('.lang-copyright-subtitle').textContent = 'स्मार्टफोन की आवश्यकता नहीं। सभी बेसिक फोन पर काम करता है।';
+        }
+
+        // Set English
+        function setEnglish() {
+            document.querySelector('.lang-logo').textContent = 'KrishiMitra';
+            document.querySelector('.lang-home').textContent = 'Home';
+            document.querySelector('.lang-features').textContent = 'Features';
+            document.querySelector('.lang-tools').textContent = 'Tools';
+            document.querySelector('.lang-contact').textContent = 'Contact';
+            document.querySelector('.lang-login').textContent = 'Login';
+            document.querySelector('.lang-start-free').textContent = 'Start Free';
+            document.querySelector('.lang-hero-title').textContent = 'Your Personal Farming Assistant';
+            document.querySelector('.lang-hero-subtitle').textContent = 'Get easy-to-understand farming advice in your language, using simple technology that works even on basic phones';
+            document.querySelector('.lang-hero-cta').textContent = 'See How It Works';
+            document.querySelector('.lang-features-title').textContent = 'Designed For Indian Farmers';
+            document.querySelector('.lang-features-subtitle').textContent = 'Simple tools that work on any phone, in your language, with no technical knowledge needed';
+            document.querySelector('.lang-feature-1-title').textContent = 'Works on Any Phone';
+            document.querySelector('.lang-feature-1-subtitle').textContent = 'No smartphone needed. Our service works on basic feature phones via SMS and voice calls';
+            document.querySelector('.lang-feature-2-title').textContent = 'Your Local Language';
+            document.querySelector('.lang-feature-2-subtitle').textContent = 'Get information in Hindi, Tamil, Telugu, Marathi, Bengali, and other Indian languages';
+            document.querySelector('.lang-feature-3-title').textContent = 'Practical Advice';
+            document.querySelector('.lang-feature-3-subtitle').textContent = 'Simple, actionable recommendations based on your local weather and soil conditions';
+            document.querySelector('.lang-tools-title').textContent = 'Simple Tools for Better Farming';
+            document.querySelector('.lang-tools-subtitle').textContent = 'Get instant access to the information you need, when you need it';
+            document.querySelector('.lang-tool-1-title').textContent = 'Weather Alerts';
+            document.querySelector('.lang-tool-1-subtitle').textContent = 'Get 3-day weather forecasts for your village by SMS or voice call';
+            document.querySelector('.lang-tool-2-title').textContent = 'Market Prices';
+            document.querySelector('.lang-tool-2-subtitle').textContent = 'Check today\'s prices for your crops at nearby mandis before you sell';
+            document.querySelector('.lang-tool-3-title').textContent = 'Ask an Expert';
+            document.querySelector('.lang-tool-3-subtitle').textContent = 'Get free advice from agricultural experts in your language';
+            document.querySelector('.lang-how-it-works-title').textContent = 'How It Works';
+            document.querySelector('.lang-how-it-works-subtitle').textContent = '3 easy steps to get farming advice';
+            document.querySelector('.lang-step-1-title').textContent = 'Step 1: Register';
+            document.querySelector('.lang-step-1-subtitle').textContent = 'Sign up with your phone number (works on any phone)';
+            document.querySelector('.lang-step-2-title').textContent = 'Step 2: Tell Us About Your Farm';
+            document.querySelector('.lang-step-2-subtitle').textContent = 'Share your location and crop details (we\'ll guide you through it)';
+            document.querySelector('.lang-step-3-title').textContent = 'Step 3: Get Advice';
+            document.querySelector('.lang-step-3-subtitle').textContent = 'Receive personalized recommendations by SMS or voice call';
+            document.querySelector('.lang-cta-title').textContent = 'Ready to Try KrishiMitra?';
+            document.querySelector('.lang-cta-subtitle').textContent = 'Join thousands of farmers who are getting better yields with simple, practical advice';
+            document.querySelector('.lang-cta-btn-primary').textContent = 'Sign Up Free';
+            document.querySelector('.lang-cta-btn-secondary').textContent = 'Learn More';
+            document.querySelector('.lang-footer-tagline').textContent = 'Simple farming advice for every Indian farmer';
+            document.querySelector('.lang-footer-quick-links').textContent = 'Quick Links';
+            document.querySelector('.lang-footer-contact').textContent = 'Contact Us';
+            document.querySelector('.lang-footer-call').textContent = '📞 Call: 1800-123-4567';
+            document.querySelector('.lang-footer-sms').textContent = '💬 SMS: KRISHI to 56767';
+            document.querySelector('.lang-footer-whatsapp').textContent = '📱 WhatsApp: +91 98765 43210';
+            document.querySelector('.lang-footer-languages').textContent = 'Languages';
+            document.querySelector('.lang-copyright').textContent = '© 2025 KrishiMitra. Made with ♥ for Indian Farmers.';
+            document.querySelector('.lang-copyright-subtitle').textContent = 'No smartphone needed. Works on all basic phones.';
+        }
+
         // Mobile menu toggle
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobile-menu');
 
-        hamburger.addEventListener('click', () => {
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
             mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-menu-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
         });
 
         // Close mobile menu when clicking outside
@@ -717,17 +1070,13 @@
             }
         });
 
-        // Smooth scrolling for navigation links
+        // Smooth scrolling for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-
-                // Close mobile menu if open
                 mobileMenu.classList.remove('active');
-
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
-
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     targetElement.scrollIntoView({
@@ -740,8 +1089,7 @@
         // Update active nav link on scroll
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-links a');
-
+            const navLinks = document.querySelectorAll('.nav-links a, .mobile-menu-links a');
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
@@ -750,13 +1098,25 @@
                     current = section.getAttribute('id');
                 }
             });
-
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === `#${current}`) {
                     link.classList.add('active');
                 }
             });
+        });
+
+        // Add fade-in animations on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
         });
     </script>
 </body>
