@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro AI - Smart Crop Recommendation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4CAF50;
+            --primary-light: #C8E6C9;
+            --secondary: #FFC107;
+            --accent: #009688;
+            --text: #333333;
+            --text-light: #666666;
+            --white: #FFFFFF;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --border-radius: 16px;
+            --transition: all 0.3s ease;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background-color: #0A0A12;
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        /* Navigation */
+        nav {
+            background-color: rgba(10, 10, 18, 0.9);
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0.8rem 0;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        .logo i {
+            margin-right: 0.5rem;
+            color: var(--primary);
+            font-size: 2.2rem;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 500;
+            padding: 0.7rem 0;
+            position: relative;
+            transition: var(--transition);
+            font-size: 1.05rem;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-links a.active {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.6rem;
+            color: var(--primary);
+        }
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        .btn-primary {
+            padding: 0.7rem 1.5rem;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        .btn-primary:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .btn-outline {
+            padding: 0.7rem 1.5rem;
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        .btn-outline:hover {
+            background-color: rgba(76, 175, 80, 0.1);
+        }
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(10, 10, 18, 0.7), rgba(10, 10, 18, 0.7)),
+                        url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 2rem 1rem;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(10, 10, 18, 0.6);
+            border-radius: var(--border-radius);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            line-height: 1.1;
+            background: linear-gradient(90deg, #FFD700, #4CAF50, #009688);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+        .hero-cta {
+            display: inline-block;
+            padding: 1.2rem 2.8rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--white);
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+        }
+        /* Footer Links */
+        .footer-links {
+            position: fixed;
+            bottom: 2rem;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: var(--transition);
+        }
+        .footer-links a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background-color: rgba(10, 10, 18, 0.95);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            padding: 1rem 0;
+        }
+        .mobile-menu.active {
+            display: block;
+        }
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 0 1.5rem;
+        }
+        .mobile-menu-links a {
+            padding: 1rem;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.2s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            font-size: 1rem;
+        }
+        .mobile-menu-links a:last-child {
+            border-bottom: none;
+        }
+        .mobile-menu-links a:hover {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: var(--secondary);
+        }
+        .mobile-menu-links a.active {
+            background-color: rgba(76, 175, 80, 0.2);
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+            }
+            .auth-buttons {
+                display: none;
+            }
+            body {
+                padding-top: 60px;
+            }
+            .hero {
+                padding: 1rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            .hero-cta {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+                min-width: 200px;
+                display: block;
+                margin: 0 auto 1.5rem;
+            }
+            .mobile-menu-links a {
+                font-size: 1rem;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-seedling"></i>
+                <span>Agro AI</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <div class="mobile-menu-links">
+                <a href="#about">About</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Smart Crop Recommendation<br>(Powered by NASA Data)</h1>
+            <p>Get data-driven, hyper-local crop advice using satellite imagery and AI. Optimize yields, reduce costs, and farm smarter.</p>
+            <a href="/dashboard" class="hero-cta">Get Recommendation</a>
+        </div>
+    </section>
+    <!-- Footer Links -->
+    <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+    </div>
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (hamburger && mobileMenu) {
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                mobileMenu.classList.toggle('active');
+            });
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('.mobile-menu-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                });
+            });
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (event) => {
+                if (!hamburger.contains(event.target) && !mobileMenu.contains(event.target)) {
+                    mobileMenu.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
