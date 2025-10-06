@@ -9,6 +9,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #4CAF50;
+            --primary-light: #C8E6C9;
+            --secondary: #FFC107;
+            --accent: #009688;
+            --text: #333333;
+            --text-light: #666666;
+            --white: #FFFFFF;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --border-radius: 16px;
+            --transition: all 0.3s ease;
+        }
         * {
             margin: 0;
             padding: 0;
@@ -17,7 +29,7 @@
         }
         body {
             background-color: #F8F9FA;
-            color: #333333;
+            color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
             padding-top: 80px;
@@ -30,8 +42,8 @@
         }
         /* Navigation */
         nav {
-            background-color: #FFFFFF;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            background-color: var(--white);
+            box-shadow: var(--shadow);
             position: fixed;
             top: 0;
             left: 0;
@@ -50,11 +62,11 @@
             align-items: center;
             font-size: 1.8rem;
             font-weight: 700;
-            color: #4CAF50;
+            color: var(--primary);
         }
         .logo i {
             margin-right: 0.5rem;
-            color: #4CAF50;
+            color: var(--primary);
             font-size: 2.2rem;
         }
         .nav-links {
@@ -64,11 +76,11 @@
         }
         .nav-links a {
             text-decoration: none;
-            color: #333333;
+            color: var(--text);
             font-weight: 500;
             padding: 0.7rem 0;
             position: relative;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             font-size: 1.05rem;
         }
         .nav-links a::after {
@@ -78,14 +90,14 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: #FF9800;
-            transition: all 0.3s ease;
+            background-color: var(--accent);
+            transition: var(--transition);
         }
         .nav-links a:hover::after {
             width: 100%;
         }
         .nav-links a.active {
-            color: #FF9800;
+            color: var(--accent);
             font-weight: 600;
         }
         .nav-links a.active::after {
@@ -95,7 +107,7 @@
             display: none;
             cursor: pointer;
             font-size: 1.6rem;
-            color: #4CAF50;
+            color: var(--primary);
         }
         .auth-buttons {
             display: flex;
@@ -104,28 +116,28 @@
         }
         .btn-primary {
             padding: 0.7rem 1.5rem;
-            background-color: #4CAF50;
-            color: #FFFFFF;
+            background-color: var(--primary);
+            color: var(--white);
             border: none;
-            border-radius: 16px;
+            border-radius: var(--border-radius);
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             cursor: pointer;
             font-size: 0.95rem;
         }
         .btn-primary:hover {
-            background-color: #2E7D32;
+            background-color: var(--accent);
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .btn-outline {
             padding: 0.7rem 1.5rem;
             background-color: transparent;
-            color: #4CAF50;
-            border: 1px solid #4CAF50;
-            border-radius: 16px;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            border-radius: var(--border-radius);
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             cursor: pointer;
             font-size: 0.95rem;
         }
@@ -135,15 +147,15 @@
         /* Hero Section */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.8) 0%, rgba(249, 168, 37, 0.6) 100%),
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.8) 0%, rgba(0, 150, 136, 0.6) 100%),
                         url('https://images.unsplash.com/photo-1591623586301-8b4d2a83a43f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
             background-size: cover;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: #FFFFFF;
-            padding: 2rem;
+            color: var(--white);
+            padding: 2rem 1rem;
         }
         .hero::before {
             content: '';
@@ -160,7 +172,7 @@
             max-width: 900px;
             width: 100%;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 1rem;
         }
         .hero h1 {
             font-size: 3.5rem;
@@ -182,30 +194,30 @@
         .hero-cta {
             display: inline-block;
             padding: 1.2rem 2.8rem;
-            background-color: #FF9800;
-            color: #4CAF50;
+            background-color: var(--secondary);
+            color: var(--primary);
             border-radius: 50px;
             font-size: 1.3rem;
             font-weight: 700;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-            border: 2px solid #FFFFFF;
+            border: 2px solid var(--white);
             margin-bottom: 2rem;
         }
         .hero-cta:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-            background-color: #FFFFFF;
-            color: #4CAF50;
+            background-color: var(--white);
+            color: var(--primary);
         }
         .hero-image {
             max-width: 100%;
             height: auto;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
             margin-top: 2rem;
-            border: 3px solid #FFFFFF;
+            border: 3px solid var(--white);
         }
         /* Features Section */
         .section {
@@ -216,12 +228,12 @@
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: #4CAF50;
+            color: var(--primary);
         }
         .section-subtitle {
             text-align: center;
             font-size: 1.2rem;
-            color: #666666;
+            color: var(--text-light);
             margin-bottom: 4rem;
             max-width: 700px;
             margin-left: auto;
@@ -230,16 +242,15 @@
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            justify-content: center;
+            gap: 2.5rem;
         }
         .feature-card {
-            background-color: #FFFFFF;
+            background-color: var(--white);
             padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
             text-align: center;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             border: 1px solid rgba(0, 0, 0, 0.05);
             position: relative;
             overflow: hidden;
@@ -251,7 +262,7 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(90deg, #4CAF50, #FF9800);
+            background: linear-gradient(90deg, var(--primary), var(--accent));
         }
         .feature-card:hover {
             transform: translateY(-10px);
@@ -261,7 +272,7 @@
         .feature-icon {
             width: 90px;
             height: 90px;
-            background: linear-gradient(135deg, #C8E6C9, #4CAF50);
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -282,28 +293,28 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: #4CAF50;
+            color: var(--primary);
         }
         .feature-card p {
-            color: #666666;
+            color: var(--text-light);
             line-height: 1.6;
         }
         /* Quick Access Section */
         .quick-access {
-            background-color: #C8E6C9;
-            padding: 5rem 0;
+            background-color: var(--primary-light);
+            padding: 4rem 0;
         }
         .quick-access-title {
             text-align: center;
             font-size: 2.2rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: #4CAF50;
+            color: var(--primary);
         }
         .quick-access-subtitle {
             text-align: center;
             font-size: 1.1rem;
-            color: #666666;
+            color: var(--text-light);
             margin-bottom: 3rem;
             max-width: 600px;
             margin-left: auto;
@@ -313,15 +324,14 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            justify-content: center;
         }
         .quick-access-card {
-            background-color: #FFFFFF;
+            background-color: var(--white);
             padding: 2rem;
-            border-radius: 16px;
+            border-radius: var(--border-radius);
             text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            box-shadow: var(--shadow);
             border: 1px solid rgba(0, 0, 0, 0.05);
             position: relative;
             overflow: hidden;
@@ -333,7 +343,7 @@
             right: 0;
             width: 60px;
             height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(249, 168, 37, 0.1));
+            background: linear-gradient(45deg, transparent, rgba(0, 150, 136, 0.1));
         }
         .quick-access-card:hover {
             transform: translateY(-8px);
@@ -342,13 +352,13 @@
         .quick-access-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, rgba(249, 168, 37, 0.2), rgba(76, 175, 80, 0.2));
+            background: linear-gradient(135deg, rgba(0, 150, 136, 0.2), rgba(76, 175, 80, 0.2));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
-            color: #4CAF50;
+            color: var(--primary);
             font-size: 2.2rem;
             border: 2px dashed rgba(76, 175, 80, 0.3);
         }
@@ -356,22 +366,21 @@
             font-size: 1.4rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: #4CAF50;
+            color: var(--primary);
         }
         .quick-access-card p {
-            color: #666666;
+            color: var(--text-light);
             line-height: 1.6;
         }
         /* How It Works */
         .how-it-works {
-            background-color: #FFFFFF;
+            background-color: var(--white);
             padding: 5rem 0;
         }
         .how-it-works-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            justify-content: center;
+            gap: 2.5rem;
         }
         .how-it-works-card {
             text-align: center;
@@ -380,7 +389,7 @@
         .how-it-works-icon {
             width: 96px;
             height: 96px;
-            background-color: #C8E6C9;
+            background-color: var(--primary-light);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -391,17 +400,17 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: #4CAF50;
+            color: var(--primary);
         }
         .how-it-works-card p {
-            color: #666666;
+            color: var(--text-light);
             line-height: 1.6;
         }
         /* CTA Section */
         .cta-section {
-            background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
             padding: 5rem 0;
-            color: #FFFFFF;
+            color: var(--white);
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -444,48 +453,48 @@
         }
         .cta-btn-primary {
             padding: 1rem 2.5rem;
-            background-color: #FF9800;
-            color: #4CAF50;
+            background-color: var(--secondary);
+            color: var(--primary);
             border-radius: 50px;
             font-size: 1.1rem;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
         .cta-btn-primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-            background-color: #FFFFFF;
-            color: #4CAF50;
+            background-color: var(--white);
+            color: var(--primary);
         }
         .cta-btn-secondary {
             padding: 1rem 2.5rem;
             background-color: transparent;
-            color: #FFFFFF;
-            border: 2px solid #FFFFFF;
+            color: var(--white);
+            border: 2px solid var(--white);
             border-radius: 50px;
             font-size: 1.1rem;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
         .cta-btn-secondary:hover {
-            background-color: #FFFFFF;
-            color: #4CAF50;
+            background-color: var(--white);
+            color: var(--primary);
         }
         .cta-image {
             max-width: 100%;
             height: auto;
-            border-radius: 16px;
+            border-radius: var(--border-radius);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             border: 3px solid rgba(255, 255, 255, 0.3);
             margin-top: 2rem;
         }
         /* Footer */
         footer {
-            background-color: #2E7D32;
-            color: #FFFFFF;
+            background-color: var(--primary);
+            color: var(--white);
             padding: 3rem 0 0;
             width: 100%;
         }
@@ -497,7 +506,6 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
             margin-bottom: 2.5rem;
-            justify-items: center;
         }
         .footer-column h4 {
             font-size: 1.3rem;
@@ -513,50 +521,47 @@
             left: 0;
             width: 50px;
             height: 2px;
-            background-color: #FF9800;
+            background-color: var(--secondary);
         }
         .footer-column ul {
             list-style: none;
-            text-align: center;
         }
         .footer-column ul li {
             margin-bottom: 0.8rem;
         }
         .footer-column ul li a {
-            color: #FFFFFF;
+            color: var(--white);
             text-decoration: none;
             transition: color 0.3s;
             opacity: 0.9;
         }
         .footer-column ul li a:hover {
-            color: #FF9800;
+            color: var(--secondary);
             opacity: 1;
         }
         .contact-info {
             display: flex;
             align-items: center;
             margin-bottom: 1rem;
-            justify-content: center;
         }
         .contact-info i {
             margin-right: 0.8rem;
-            color: #FF9800;
+            color: var(--secondary);
             font-size: 1.1rem;
         }
         .social-links {
             display: flex;
             gap: 1.2rem;
             margin-top: 1.5rem;
-            justify-content: center;
         }
         .social-links a {
-            color: #FFFFFF;
+            color: var(--white);
             font-size: 1.4rem;
             transition: all 0.3s;
             opacity: 0.9;
         }
         .social-links a:hover {
-            color: #FF9800;
+            color: var(--secondary);
             transform: translateY(-3px);
             opacity: 1;
         }
@@ -570,8 +575,8 @@
         }
         .hackathon-badge {
             display: inline-block;
-            background-color: #FF9800;
-            color: #4CAF50;
+            background-color: var(--secondary);
+            color: var(--primary);
             padding: 0.4rem 1rem;
             border-radius: 20px;
             font-size: 0.9rem;
@@ -586,7 +591,7 @@
             top: 70px;
             left: 0;
             right: 0;
-            background-color: #FFFFFF;
+            background-color: var(--white);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             z-index: 999;
             padding: 1rem 0;
@@ -601,23 +606,24 @@
             padding: 0 1.5rem;
         }
         .mobile-menu-links a {
-            padding: 0.8rem 1rem;
-            color: #333333;
+            padding: 1rem;
+            color: var(--text);
             text-decoration: none;
             transition: all 0.2s;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             text-align: center;
+            font-size: 1rem;
         }
         .mobile-menu-links a:last-child {
             border-bottom: none;
         }
         .mobile-menu-links a:hover {
             background-color: rgba(76, 175, 80, 0.1);
-            color: #4CAF50;
+            color: var(--primary);
         }
         .mobile-menu-links a.active {
             background-color: rgba(76, 175, 80, 0.2);
-            color: #4CAF50;
+            color: var(--primary);
             font-weight: 600;
         }
         .mobile-auth-buttons {
@@ -629,6 +635,8 @@
         .mobile-auth-buttons .btn-primary,
         .mobile-auth-buttons .btn-outline {
             width: 100%;
+            padding: 1rem;
+            font-size: 1rem;
         }
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -641,31 +649,97 @@
             .auth-buttons {
                 display: none;
             }
+            body {
+                padding-top: 60px;
+            }
+            .hero {
+                padding: 1rem;
+            }
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             .hero p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            .hero-cta {
+                padding: 1rem 2rem;
                 font-size: 1.1rem;
+                min-width: 200px;
+                display: block;
+                margin: 0 auto 1.5rem;
+            }
+            .hero-image {
+                max-height: 250px;
+                object-fit: cover;
+            }
+            .section {
+                padding: 3rem 0;
             }
             .section-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
             }
             .features-grid,
             .quick-access-grid,
             .how-it-works-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .feature-card,
+            .quick-access-card {
+                padding: 1.8rem;
+            }
+            .feature-icon,
+            .quick-access-icon {
+                width: 70px;
+                height: 70px;
+                margin-bottom: 1rem;
             }
             .cta-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+            .cta-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
             }
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
             }
-            .btn-primary,
-            .btn-outline {
+            .cta-btn-primary,
+            .cta-btn-secondary {
                 width: 100%;
-                margin-bottom: 0.5rem;
+                max-width: 300px;
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+                margin-bottom: 1rem;
+            }
+            .cta-image {
+                max-height: 200px;
+                margin-top: 1.5rem;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .footer-column {
+                text-align: center;
+            }
+            .copyright {
+                font-size: 0.8rem;
+            }
+            .mobile-menu-links a {
+                font-size: 1rem;
+                padding: 1rem;
+            }
+            .mobile-auth-buttons .btn-primary,
+            .mobile-auth-buttons .btn-outline {
+                font-size: 1rem;
+                padding: 1rem;
             }
         }
         /* Animations */
@@ -739,13 +813,6 @@
             <h2 class="section-title fade-in lang-features-title">Designed For Indian Farmers</h2>
             <p class="section-subtitle fade-in delay-1 lang-features-subtitle">Simple tools that work on any phone, in your language, with no technical knowledge needed</p>
             <div class="features-grid">
-                <div class="feature-card fade-in delay-1">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3 class="lang-feature-1-title">Works on Any Phone</h3>
-                    <p class="lang-feature-1-subtitle">No smartphone needed. Our service works on basic feature phones via SMS and voice calls</p>
-                </div>
                 <div class="feature-card fade-in delay-2">
                     <div class="feature-icon">
                         <i class="fas fa-language"></i>
@@ -801,21 +868,21 @@
             <div class="how-it-works-grid">
                 <div class="how-it-works-card fade-in delay-1">
                     <div class="how-it-works-icon">
-                        <i class="fas fa-mobile-alt text-[#4CAF50] text-3xl"></i>
+                        <i class="fas fa-mobile-alt" style="color: var(--primary); font-size: 2.5rem;"></i>
                     </div>
                     <h3 class="lang-step-1-title">Step 1: Register</h3>
                     <p class="lang-step-1-subtitle">Sign up with your phone number (works on any phone)</p>
                 </div>
                 <div class="how-it-works-card fade-in delay-2">
                     <div class="how-it-works-icon">
-                        <i class="fas fa-comment-dots text-[#4CAF50] text-3xl"></i>
+                        <i class="fas fa-comment-dots" style="color: var(--primary); font-size: 2.5rem;"></i>
                     </div>
                     <h3 class="lang-step-2-title">Step 2: Tell Us About Your Farm</h3>
                     <p class="lang-step-2-subtitle">Share your location and crop details (we'll guide you through it)</p>
                 </div>
                 <div class="how-it-works-card fade-in delay-3">
                     <div class="how-it-works-icon">
-                        <i class="fas fa-lightbulb text-[#4CAF50] text-3xl"></i>
+                        <i class="fas fa-lightbulb" style="color: var(--primary); font-size: 2.5rem;"></i>
                     </div>
                     <h3 class="lang-step-3-title">Step 3: Get Advice</h3>
                     <p class="lang-step-3-subtitle">Receive personalized recommendations by SMS or voice call</p>
@@ -845,7 +912,7 @@
                     <div class="footer-column fade-in">
                         <div class="logo" style="color: white; margin-bottom: 1.5rem; justify-content: flex-start;">
                             <i class="fas fa-tractor"></i>
-                            <span class="lang-logo">KrishiMitra</span>
+                            <span class="lang-logo" style="margin-left: 0.5rem;">KrishiMitra</span>
                         </div>
                         <p class="lang-footer-tagline" style="margin-bottom: 1rem;">Simple farming advice for every Indian farmer</p>
                         <div class="hackathon-badge">Made in India 🇮🇳</div>
@@ -880,7 +947,7 @@
                     </div>
                     <div class="footer-column fade-in delay-3">
                         <h4 class="lang-footer-languages">Languages</h4>
-                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; justify-content: center;">
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
                             <span style="background: rgba(255,255,255,0.2); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.9rem;">हिन्दी</span>
                             <span style="background: rgba(255,255,255,0.2); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.9rem;">தமிழ்</span>
                             <span style="background: rgba(255,255,255,0.2); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.9rem;">తెలుగు</span>
