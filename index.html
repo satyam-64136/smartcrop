@@ -70,6 +70,12 @@
     transition:border-color .2s ease, color .2s ease;
   }
   .nav-cta:hover{color:var(--text);border-color:var(--green);}
+  .lang-toggle{
+    background:none;border:1px solid var(--border-strong);color:var(--text-dim);
+    font-family:var(--sans);font-size:13px;padding:8px 14px;border-radius:100px;cursor:pointer;
+    transition:border-color .2s ease,color .2s ease;
+  }
+  .lang-toggle:hover{border-color:var(--amber);color:var(--text);}
 
   /* Hero */
   .hero{padding:76px 0 60px;}
@@ -197,6 +203,38 @@
   .alt-item .name{text-transform:capitalize;color:var(--text);}
   .alt-item .pct{color:var(--text-faint);}
 
+  .region-select{
+    width:100%;background:var(--surface-2);border:1px solid var(--border);
+    color:var(--text);font-family:var(--sans);font-size:14px;
+    border-radius:9px;padding:10px 11px;margin-bottom:8px;
+  }
+  .region-hint{font-size:12px;color:var(--text-faint);line-height:1.5;margin-bottom:4px;}
+
+  .why-box{
+    border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+    padding:20px 0;margin-bottom:18px;
+  }
+  .why-title{font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:4px;}
+  .why-sub{font-size:12.5px;color:var(--text-faint);margin-bottom:12px;}
+  .imp-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+  .imp-row .imp-label{width:92px;flex:none;font-size:12.5px;color:var(--text-dim);}
+  .imp-row .imp-track{flex:1;height:6px;border-radius:100px;background:rgba(255,255,255,0.08);overflow:hidden;}
+  .imp-row .imp-fill{height:100%;background:var(--amber);border-radius:100px;}
+  .imp-row .imp-pct{width:38px;flex:none;text-align:right;font-size:12px;color:var(--text-faint);}
+
+  .cmp-row{
+    display:flex;align-items:center;justify-content:space-between;
+    font-size:13px;padding:7px 0;border-bottom:1px solid var(--border);
+  }
+  .cmp-row:last-child{border-bottom:none;}
+  .cmp-row .cmp-label{color:var(--text-dim);}
+  .cmp-row .cmp-val{color:var(--text);}
+  .cmp-tag{
+    font-size:11px;padding:2px 9px;border-radius:100px;margin-left:8px;
+  }
+  .cmp-tag.in-range{background:var(--green-soft);color:var(--green-strong);}
+  .cmp-tag.out-range{background:var(--amber-soft);color:var(--amber);}
+
   /* How it works */
   .how{padding:20px 0 90px;}
   .how .wrap{display:grid;grid-template-columns:0.9fr 1.1fr;gap:56px;align-items:start;}
@@ -242,21 +280,24 @@
       </svg>
       Agro AI
     </div>
-    <a href="#tool" class="nav-cta">Open the tool</a>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <button type="button" id="langToggle" class="lang-toggle" aria-label="Switch language">हिंदी</button>
+      <a href="#tool" class="nav-cta" data-i18n="nav.cta">Open the tool</a>
+    </div>
   </div>
 </nav>
 
 <header class="hero">
   <div class="wrap">
     <div>
-      <div class="eyebrow-line"><span class="dot"></span>Runs entirely in your browser — no account, no server</div>
-      <h1>Crop advice built from soil readings, not <em>guesswork</em></h1>
-      <p class="lede">Enter your field's nitrogen, phosphorus, potassium, pH and local climate, and get a ranked crop recommendation from a model trained on real agricultural data — computed on your device.</p>
+      <div class="eyebrow-line"><span class="dot"></span><span data-i18n="hero.eyebrow">Runs entirely in your browser — no account, no server</span></div>
+      <h1 data-i18n="hero.title">Crop advice built from soil readings, not <em>guesswork</em></h1>
+      <p class="lede" data-i18n="hero.lede">Enter your field's nitrogen, phosphorus, potassium, pH and local climate, and get a ranked crop recommendation from a model trained on real agricultural data — computed on your device.</p>
       <div class="hero-actions">
-        <a href="#tool" class="btn-primary">
+        <a href="#tool" class="btn-primary" data-i18n="hero.cta">
           Get a recommendation
         </a>
-        <span class="stat-line"><b>22</b> crops · <b>2,200</b> field samples · <b>99.3%</b> test accuracy</span>
+        <span class="stat-line"><b>22</b> <span data-i18n="hero.stat1">crops</span> · <b>2,200</b> <span data-i18n="hero.stat2">field samples</span> · <b>99.3%</b> <span data-i18n="hero.stat3">test accuracy</span></span>
       </div>
     </div>
     <div class="hero-art">
@@ -311,23 +352,33 @@
       <div class="tool-grid">
 
         <div class="panel">
-          <h2>Field readings</h2>
-          <p class="sub">Values from a soil test kit or lab report give the best result.</p>
+          <h2 data-i18n="form.title">Field readings</h2>
+          <p class="sub" data-i18n="form.sub">Values from a soil test kit or lab report give the best result.</p>
+
+          <div class="field-group">
+            <div class="field-group-label">
+              <span data-i18n="form.regionLabel">No soil test yet? Start from your region</span>
+            </div>
+            <select id="regionPreset" class="region-select">
+              <option value="" data-i18n="form.regionPlaceholder">Select a region (optional)</option>
+            </select>
+            <div class="region-hint" data-i18n="form.regionHint">Fills in typical climate for the region. Soil nutrients and pH vary field to field — use a soil test or Soil Health Card value for those.</div>
+          </div>
 
           <form id="cropForm">
             <div class="field-group">
-              <div class="field-group-label">Soil nutrients (kg/ha)</div>
+              <div class="field-group-label" data-i18n="form.nutrients">Soil nutrients (kg/ha)</div>
               <div class="field-row">
                 <div class="field">
-                  <label for="n">Nitrogen (N)</label>
+                  <label for="n" data-i18n="form.n">Nitrogen (N)</label>
                   <input type="number" id="n" min="0" max="150" step="1" placeholder="e.g. 90" required>
                 </div>
                 <div class="field">
-                  <label for="p">Phosphorus (P)</label>
+                  <label for="p" data-i18n="form.p">Phosphorus (P)</label>
                   <input type="number" id="p" min="0" max="150" step="1" placeholder="e.g. 42" required>
                 </div>
                 <div class="field">
-                  <label for="k">Potassium (K)</label>
+                  <label for="k" data-i18n="form.k">Potassium (K)</label>
                   <input type="number" id="k" min="0" max="210" step="1" placeholder="e.g. 43" required>
                 </div>
               </div>
@@ -335,34 +386,34 @@
 
             <div class="field-group">
               <div class="field-group-label">
-                <span>Climate</span>
+                <span data-i18n="form.climate">Climate</span>
                 <button type="button" class="locate-btn" id="locateBtn">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
-                  Use live weather at my location
+                  <span data-i18n="form.locate">Use live weather at my location</span>
                 </button>
               </div>
               <div class="field-row">
                 <div class="field">
-                  <label for="temperature">Temperature</label>
+                  <label for="temperature" data-i18n="form.temperature">Temperature</label>
                   <input type="number" id="temperature" step="0.1" placeholder="e.g. 24.5">
                   <span class="unit">°C</span>
                 </div>
                 <div class="field">
-                  <label for="humidity">Humidity</label>
+                  <label for="humidity" data-i18n="form.humidity">Humidity</label>
                   <input type="number" id="humidity" min="0" max="100" step="0.1" placeholder="e.g. 65">
                   <span class="unit">%</span>
                 </div>
                 <div class="field">
-                  <label for="rainfall">Rainfall</label>
+                  <label for="rainfall" data-i18n="form.rainfall">Rainfall</label>
                   <input type="number" id="rainfall" min="0" step="0.1" placeholder="e.g. 120">
-                  <span class="unit">mm (recent period)</span>
+                  <span class="unit" data-i18n="form.rainfallUnit">mm (recent period)</span>
                 </div>
               </div>
               <div class="locate-status" id="locateStatus"></div>
             </div>
 
             <div class="field-group" style="margin-bottom:6px;">
-              <div class="field-group-label">Soil pH</div>
+              <div class="field-group-label" data-i18n="form.ph">Soil pH</div>
               <div class="field-row two" style="max-width:220px;">
                 <div class="field">
                   <input type="number" id="ph" min="0" max="14" step="0.1" placeholder="e.g. 6.5" required>
@@ -370,25 +421,34 @@
               </div>
             </div>
 
-            <button type="submit" class="submit-btn">Get recommendation</button>
+            <button type="submit" class="submit-btn" data-i18n="form.submit">Get recommendation</button>
           </form>
         </div>
 
         <div class="panel result-panel" id="resultPanel">
-          <h2>Recommendation</h2>
-          <p class="sub">Ranked by the model's confidence for your inputs.</p>
+          <h2 data-i18n="result.title">Recommendation</h2>
+          <p class="sub" data-i18n="result.sub">Ranked by the model's confidence for your inputs.</p>
           <div class="empty-state" id="emptyState">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg>
-            Fill in the readings on the left and submit to see the top crop matches for your field.
+            <span data-i18n="result.empty">Fill in the readings on the left and submit to see the top crop matches for your field.</span>
           </div>
           <div id="resultContent" style="display:none;">
             <div class="result-top">
-              <div class="label">Best match</div>
+              <div class="label" data-i18n="result.best">Best match</div>
               <div class="crop-name" id="topCropName">—</div>
               <div class="confidence" id="topCropConf">—</div>
               <div class="conf-bar"><div class="conf-bar-fill" id="topCropBar" style="width:0%"></div></div>
               <div class="note" id="topCropNote"></div>
             </div>
+
+            <div class="why-box">
+              <div class="why-title" data-i18n="result.whyTitle">Why this recommendation</div>
+              <div class="why-sub" data-i18n="result.whySub">What most influenced the model, based on the full training set:</div>
+              <div id="importanceBars"></div>
+              <div class="why-sub" id="compareTitle" style="margin-top:16px;"></div>
+              <div id="compareRows"></div>
+            </div>
+
             <div class="alt-list" id="altList"></div>
           </div>
         </div>
@@ -3075,6 +3135,125 @@ function mulVectorNumber(v1, num) {
 
 const CLASSES = ["apple", "banana", "blackgram", "chickpea", "coconut", "coffee", "cotton", "grapes", "jute", "kidneybeans", "lentil", "maize", "mango", "mothbeans", "mungbean", "muskmelon", "orange", "papaya", "pigeonpeas", "pomegranate", "rice", "watermelon"];
 
+/* ---------- Model transparency data (computed from the trained model + training set) ---------- */
+const FEATURE_LABELS = { N:'Nitrogen', P:'Phosphorus', K:'Potassium', temperature:'Temperature', humidity:'Humidity', ph:'Soil pH', rainfall:'Rainfall' };
+const FEATURE_LABELS_HI = { N:'नाइट्रोजन', P:'फॉस्फोरस', K:'पोटैशियम', temperature:'तापमान', humidity:'नमी', ph:'मिट्टी का pH', rainfall:'वर्षा' };
+const FEATURE_ORDER = ['N','P','K','temperature','humidity','ph','rainfall'];
+const FEATURE_IMPORTANCE = {"N": 0.0998, "P": 0.1545, "K": 0.1982, "temperature": 0.0706, "humidity": 0.2195, "ph": 0.04, "rainfall": 0.2174};
+const CROP_STATS = {"apple":{"N":[0.0,40.0,20.8],"P":[120.0,145.0,134.22],"K":[195.0,205.0,199.89],"temperature":[21.04,24.0,22.63],"humidity":[90.03,94.92,92.33],"ph":[5.51,6.5,5.93],"rainfall":[100.12,124.98,112.65]},"banana":{"N":[80.0,120.0,100.23],"P":[70.0,95.0,82.01],"K":[45.0,55.0,50.05],"temperature":[25.01,29.91,27.38],"humidity":[75.03,84.98,80.36],"ph":[5.51,6.49,5.98],"rainfall":[90.11,119.85,104.63]},"blackgram":{"N":[20.0,60.0,40.02],"P":[55.0,80.0,67.47],"K":[15.0,25.0,19.24],"temperature":[25.1,34.95,29.97],"humidity":[60.07,69.96,65.12],"ph":[6.5,7.78,7.13],"rainfall":[60.42,74.92,67.88]},"chickpea":{"N":[20.0,60.0,40.09],"P":[55.0,80.0,67.79],"K":[75.0,85.0,79.92],"temperature":[17.02,21.0,18.87],"humidity":[14.26,19.97,16.86],"ph":[5.99,8.87,7.34],"rainfall":[65.11,94.78,80.06]},"coconut":{"N":[0.0,40.0,21.98],"P":[5.0,30.0,16.93],"K":[25.0,35.0,30.59],"temperature":[25.01,29.87,27.41],"humidity":[90.02,99.98,94.84],"ph":[5.5,6.47,5.98],"rainfall":[131.09,225.63,175.69]},"coffee":{"N":[80.0,120.0,101.2],"P":[15.0,40.0,28.74],"K":[25.0,35.0,29.94],"temperature":[23.06,27.92,25.54],"humidity":[50.05,69.95,58.87],"ph":[6.02,7.49,6.79],"rainfall":[115.16,199.47,158.07]},"cotton":{"N":[100.0,140.0,117.77],"P":[35.0,60.0,46.24],"K":[15.0,25.0,19.56],"temperature":[22.0,25.99,23.99],"humidity":[75.01,84.88,79.84],"ph":[5.8,7.99,6.91],"rainfall":[60.65,99.93,80.4]},"grapes":{"N":[0.0,40.0,23.18],"P":[120.0,145.0,132.53],"K":[195.0,205.0,200.11],"temperature":[8.83,41.95,23.85],"humidity":[80.02,83.98,81.88],"ph":[5.51,6.5,6.03],"rainfall":[65.01,74.92,69.61]},"jute":{"N":[60.0,100.0,78.4],"P":[35.0,60.0,46.86],"K":[35.0,45.0,39.99],"temperature":[23.09,26.99,24.96],"humidity":[70.88,89.89,79.64],"ph":[6.0,7.49,6.73],"rainfall":[150.24,199.84,174.79]},"kidneybeans":{"N":[0.0,40.0,20.75],"P":[55.0,80.0,67.54],"K":[15.0,25.0,20.05],"temperature":[15.33,24.92,20.12],"humidity":[18.09,24.97,21.61],"ph":[5.5,6.0,5.75],"rainfall":[60.28,149.74,105.92]},"lentil":{"N":[0.0,40.0,18.77],"P":[55.0,80.0,68.36],"K":[15.0,25.0,19.41],"temperature":[18.06,29.94,24.51],"humidity":[60.09,69.92,64.8],"ph":[5.92,7.84,6.93],"rainfall":[35.03,54.94,45.68]},"maize":{"N":[60.0,100.0,77.76],"P":[35.0,60.0,48.44],"K":[15.0,25.0,19.79],"temperature":[18.04,26.55,22.39],"humidity":[55.28,74.83,65.09],"ph":[5.51,7.0,6.25],"rainfall":[60.65,109.75,84.77]},"mango":{"N":[0.0,40.0,20.07],"P":[15.0,40.0,27.18],"K":[25.0,35.0,29.92],"temperature":[27.0,35.99,31.21],"humidity":[45.02,54.96,50.16],"ph":[4.51,6.97,5.77],"rainfall":[89.29,100.81,94.7]},"mothbeans":{"N":[0.0,40.0,21.44],"P":[35.0,60.0,48.01],"K":[15.0,25.0,20.23],"temperature":[24.02,32.0,28.19],"humidity":[40.01,64.96,53.16],"ph":[3.5,9.94,6.83],"rainfall":[30.92,74.44,51.2]},"mungbean":{"N":[0.0,40.0,20.99],"P":[35.0,60.0,47.28],"K":[15.0,25.0,19.87],"temperature":[27.01,29.91,28.53],"humidity":[80.03,90.0,85.5],"ph":[6.22,7.2,6.72],"rainfall":[36.12,59.87,48.4]},"muskmelon":{"N":[80.0,120.0,100.32],"P":[5.0,30.0,17.72],"K":[45.0,55.0,50.08],"temperature":[27.02,29.94,28.66],"humidity":[90.02,94.96,92.34],"ph":[6.0,6.78,6.36],"rainfall":[20.21,29.87,24.69]},"orange":{"N":[0.0,40.0,19.58],"P":[5.0,30.0,16.55],"K":[5.0,15.0,10.01],"temperature":[10.01,34.91,22.77],"humidity":[90.01,94.96,92.17],"ph":[6.01,8.0,7.02],"rainfall":[100.17,119.69,110.47]},"papaya":{"N":[31.0,70.0,49.88],"P":[46.0,70.0,59.05],"K":[45.0,55.0,50.04],"temperature":[23.01,43.68,33.72],"humidity":[90.04,94.94,92.4],"ph":[6.5,6.99,6.74],"rainfall":[40.35,248.86,142.63]},"pigeonpeas":{"N":[0.0,40.0,20.73],"P":[55.0,80.0,67.73],"K":[15.0,25.0,20.29],"temperature":[18.32,36.98,27.74],"humidity":[30.4,69.69,48.06],"ph":[4.55,7.45,5.79],"rainfall":[90.05,198.83,149.46]},"pomegranate":{"N":[0.0,40.0,18.87],"P":[5.0,30.0,18.75],"K":[35.0,45.0,40.21],"temperature":[18.07,24.96,21.84],"humidity":[85.13,95.0,90.13],"ph":[5.56,7.2,6.43],"rainfall":[102.52,112.48,107.53]},"rice":{"N":[60.0,99.0,79.89],"P":[35.0,60.0,47.58],"K":[35.0,45.0,39.87],"temperature":[20.05,26.93,23.69],"humidity":[80.12,84.97,82.27],"ph":[5.01,7.87,6.43],"rainfall":[182.56,298.56,236.18]},"watermelon":{"N":[80.0,120.0,99.42],"P":[5.0,30.0,17.0],"K":[45.0,55.0,50.22],"temperature":[24.04,26.99,25.59],"humidity":[80.03,89.98,85.16],"ph":[6.0,6.96,6.5],"rainfall":[40.13,59.76,50.79]}}
+; // {crop: {feature: [min, max, mean]}}
+
+const CROP_NAME_HI = {
+  apple:'सेब', banana:'केला', blackgram:'उड़द', chickpea:'चना', coconut:'नारियल', coffee:'कॉफी',
+  cotton:'कपास', grapes:'अंगूर', jute:'जूट', kidneybeans:'राजमा', lentil:'मसूर', maize:'मक्का',
+  mango:'आम', mothbeans:'मोठ', mungbean:'मूंग', muskmelon:'खरबूजा', orange:'संतरा', papaya:'पपीता',
+  pigeonpeas:'अरहर', pomegranate:'अनार', rice:'चावल', watermelon:'तरबूज'
+};
+
+const CROP_INFO_HI = {
+  apple: "समशीतोष्ण फलदार पेड़ — ठंडी सर्दी और अच्छी जल निकासी वाली दोमट मिट्टी चाहिए।",
+  banana: "उष्णकटिबंधीय फसल, अधिक पानी और पोटाश चाहिए; पाले से नुकसान होता है।",
+  blackgram: "कम अवधि की दलहन फसल, हल्की मिट्टी सहन करती है और नाइट्रोजन स्थिर करती है।",
+  chickpea: "ठंडे मौसम की दलहन, आमतौर पर मानसून के बाद बची नमी पर उगाई जाती है।",
+  coconut: "तटीय ताड़ का पेड़ — रेतीली मिट्टी, उच्च आर्द्रता, साल भर गर्म जलवायु चाहिए।",
+  coffee: "छाया में उगने वाली झाड़ी, ठंडी पहाड़ियों और नियमित वर्षा की जरूरत होती है।",
+  cotton: "गर्म मौसम की रेशा फसल, गहरी मिट्टी और लंबा पाला-रहित मौसम पसंद करती है।",
+  grapes: "बेल वाली फसल — अच्छी जल निकासी और पकने के लिए स्पष्ट सूखा मौसम चाहिए।",
+  jute: "नम नदी मैदानों की रेशा फसल; शुरुआत में खड़े पानी की जरूरत होती है।",
+  kidneybeans: "दलहन फसल जो मध्यम वर्षा और अच्छी जल निकासी वाली मिट्टी पसंद करती है।",
+  lentil: "ठंडे मौसम की दलहन, कम पानी चाहिए, हल्की मिट्टी में अच्छी होती है।",
+  maize: "कई मौसम में उगाई जाने वाली अनाज फसल; नाइट्रोजन और वर्षा से उपज बढ़ती है।",
+  mango: "उष्णकटिबंधीय फलदार पेड़ — फूल आने से पहले सूखा मौसम उपज बढ़ाता है।",
+  mothbeans: "सूखा सहन करने वाली दलहन, शुष्क रेतीली मिट्टी के लिए उपयुक्त।",
+  mungbean: "कम अवधि की दलहन, दो मुख्य फसल मौसमों के बीच उगाई जाती है।",
+  muskmelon: "गर्म मौसम की बेल फसल — रेतीली दोमट, कम आर्द्रता, अधिक गर्मी चाहिए।",
+  orange: "खट्टे फल का पेड़, उपोष्णकटिबंधीय जलवायु और थोड़ी अम्लीय मिट्टी पसंद करता है।",
+  papaya: "तेजी से बढ़ने वाला उष्णकटिबंधीय फल; पाला-रहित, अच्छी जल निकासी वाली मिट्टी चाहिए।",
+  pigeonpeas: "गहरी जड़ वाली दलहन, सूखे को सहन करती है, मिट्टी में नाइट्रोजन बढ़ाती है।",
+  pomegranate: "मजबूत फल झाड़ी, अर्ध-शुष्क जलवायु के लिए उपयुक्त; खारी मिट्टी सहन करती है।",
+  rice: "मुख्य अनाज फसल, जलमग्न खेतों में उगाई जाती है; अधिक वर्षा या सिंचाई चाहिए।",
+  watermelon: "गर्म मौसम की बेल फसल — रेतीली मिट्टी, पूरी धूप, मध्यम सिंचाई चाहिए।"
+};
+
+/* ---------- Indicative regional climate presets (broad, well-documented Indian agro-climatic ranges — not a substitute for a local forecast or soil test) ---------- */
+const REGIONS = [
+  { id:'punjab-haryana', en:'Punjab & Haryana plains', hi:'पंजाब और हरियाणा के मैदान', temperature:26, humidity:55, rainfall:70 },
+  { id:'gangetic-plains', en:'Gangetic plains (UP / Bihar)', hi:'गंगा के मैदान (यूपी / बिहार)', temperature:27, humidity:65, rainfall:110 },
+  { id:'rajasthan', en:'Rajasthan (arid)', hi:'राजस्थान (शुष्क)', temperature:32, humidity:35, rainfall:35 },
+  { id:'gujarat', en:'Gujarat', hi:'गुजरात', temperature:29, humidity:55, rainfall:80 },
+  { id:'maharashtra-deccan', en:'Maharashtra / Deccan plateau', hi:'महाराष्ट्र / दक्कन का पठार', temperature:27, humidity:55, rainfall:75 },
+  { id:'west-bengal', en:'West Bengal', hi:'पश्चिम बंगाल', temperature:28, humidity:75, rainfall:150 },
+  { id:'northeast', en:'North-East India', hi:'पूर्वोत्तर भारत', temperature:24, humidity:80, rainfall:200 },
+  { id:'kerala-coastal', en:'Kerala / coastal south', hi:'केरल / तटीय दक्षिण', temperature:28, humidity:80, rainfall:180 },
+  { id:'tamil-nadu', en:'Tamil Nadu', hi:'तमिलनाडु', temperature:29, humidity:65, rainfall:90 },
+  { id:'karnataka-plateau', en:'Karnataka plateau', hi:'कर्नाटक का पठार', temperature:26, humidity:60, rainfall:80 },
+  { id:'himalayan', en:'Himalayan states', hi:'हिमालयी राज्य', temperature:15, humidity:60, rainfall:120 },
+  { id:'central-india', en:'Madhya Pradesh / Central India', hi:'मध्य प्रदेश / मध्य भारत', temperature:27, humidity:55, rainfall:95 }
+];
+
+/* ---------- UI translations ---------- */
+const I18N = {
+  en: {
+    'nav.cta':'Open the tool',
+    'hero.eyebrow':'Runs entirely in your browser — no account, no server',
+    'hero.title':'Crop advice built from soil readings, not <em>guesswork</em>',
+    'hero.lede':"Enter your field's nitrogen, phosphorus, potassium, pH and local climate, and get a ranked crop recommendation from a model trained on real agricultural data — computed on your device.",
+    'hero.cta':'Get a recommendation',
+    'hero.stat1':'crops', 'hero.stat2':'field samples', 'hero.stat3':'test accuracy',
+    'form.title':'Field readings',
+    'form.sub':'Values from a soil test kit or lab report give the best result.',
+    'form.regionLabel':'No soil test yet? Start from your region',
+    'form.regionPlaceholder':'Select a region (optional)',
+    'form.regionHint':'Fills in typical climate for the region. Soil nutrients and pH vary field to field — use a soil test or Soil Health Card value for those.',
+    'form.nutrients':'Soil nutrients (kg/ha)',
+    'form.n':'Nitrogen (N)', 'form.p':'Phosphorus (P)', 'form.k':'Potassium (K)',
+    'form.climate':'Climate',
+    'form.locate':'Use live weather at my location',
+    'form.temperature':'Temperature', 'form.humidity':'Humidity', 'form.rainfall':'Rainfall',
+    'form.rainfallUnit':'mm (recent period)',
+    'form.ph':'Soil pH',
+    'form.submit':'Get recommendation',
+    'result.title':'Recommendation',
+    'result.sub':"Ranked by the model's confidence for your inputs.",
+    'result.empty':'Fill in the readings on the left and submit to see the top crop matches for your field.',
+    'result.best':'Best match',
+    'result.whyTitle':'Why this recommendation',
+    'result.whySub':'What most influenced the model, based on the full training set:',
+    'result.compareTitle':'How your reading compares to typical {crop} fields',
+    'result.confidence':'{pct}% confidence'
+  },
+  hi: {
+    'nav.cta':'टूल खोलें',
+    'hero.eyebrow':'पूरी तरह आपके ब्राउज़र में चलता है — कोई खाता या सर्वर नहीं',
+    'hero.title':'मिट्टी की रीडिंग पर आधारित सलाह, <em>अंदाज़े</em> पर नहीं',
+    'hero.lede':'अपने खेत का नाइट्रोजन, फॉस्फोरस, पोटैशियम, pH और स्थानीय जलवायु डालें, और वास्तविक कृषि आंकड़ों पर प्रशिक्षित मॉडल से फसल सुझाव पाएं — आपके डिवाइस पर ही गणना होती है।',
+    'hero.cta':'सुझाव पाएं',
+    'hero.stat1':'फसलें', 'hero.stat2':'खेत के नमूने', 'hero.stat3':'परीक्षण सटीकता',
+    'form.title':'खेत की रीडिंग',
+    'form.sub':'मिट्टी परीक्षण किट या लैब रिपोर्ट से मिले मान सबसे अच्छे परिणाम देते हैं।',
+    'form.regionLabel':'अभी मिट्टी परीक्षण नहीं है? अपने क्षेत्र से शुरू करें',
+    'form.regionPlaceholder':'एक क्षेत्र चुनें (वैकल्पिक)',
+    'form.regionHint':'क्षेत्र की सामान्य जलवायु भर देता है। मिट्टी के पोषक तत्व और pH हर खेत में अलग होते हैं — इनके लिए मिट्टी परीक्षण या सॉइल हेल्थ कार्ड का मान उपयोग करें।',
+    'form.nutrients':'मिट्टी के पोषक तत्व (kg/ha)',
+    'form.n':'नाइट्रोजन (N)', 'form.p':'फॉस्फोरस (P)', 'form.k':'पोटैशियम (K)',
+    'form.climate':'जलवायु',
+    'form.locate':'मेरे स्थान का लाइव मौसम उपयोग करें',
+    'form.temperature':'तापमान', 'form.humidity':'नमी', 'form.rainfall':'वर्षा',
+    'form.rainfallUnit':'मिमी (हाल की अवधि)',
+    'form.ph':'मिट्टी का pH',
+    'form.submit':'सुझाव पाएं',
+    'result.title':'सुझाव',
+    'result.sub':'आपके इनपुट पर मॉडल के भरोसे के अनुसार क्रम में।',
+    'result.empty':'बाईं ओर रीडिंग भरें और अपने खेत के लिए शीर्ष फसल सुझाव देखने हेतु सबमिट करें।',
+    'result.best':'सर्वश्रेष्ठ मेल',
+    'result.whyTitle':'यह सुझाव क्यों',
+    'result.whySub':'पूरे प्रशिक्षण डेटा के आधार पर मॉडल को सबसे ज्यादा किसने प्रभावित किया:',
+    'result.compareTitle':'आपकी रीडिंग सामान्य {crop} खेतों से कैसे तुलना करती है',
+    'result.confidence':'{pct}% भरोसा'
+  }
+};
+let currentLang = 'en';
+
 /* ---------- Crop agronomy notes (general, well-known growing conditions) ---------- */
 const CROP_INFO = {
   apple: "Temperate fruit tree — needs cool winters and well-drained loamy soil.",
@@ -3115,6 +3294,81 @@ function predict(input){
 const form = document.getElementById('cropForm');
 const emptyState = document.getElementById('emptyState');
 const resultContent = document.getElementById('resultContent');
+let lastInput = null;
+
+function cropName(crop){ return currentLang === 'hi' ? (CROP_NAME_HI[crop] || crop) : crop; }
+function cropNote(crop){ return currentLang === 'hi' ? (CROP_INFO_HI[crop] || '') : (CROP_INFO[crop] || ''); }
+function t(key, vars){
+  let str = (I18N[currentLang] && I18N[currentLang][key]) || I18N.en[key] || key;
+  if(vars) Object.keys(vars).forEach(k=>{ str = str.replace(`{${k}}`, vars[k]); });
+  return str;
+}
+
+function renderImportance(){
+  const rows = FEATURE_ORDER
+    .map(f=>({ f, v: FEATURE_IMPORTANCE[f] }))
+    .sort((a,b)=>b.v-a.v);
+  const labels = currentLang === 'hi' ? FEATURE_LABELS_HI : FEATURE_LABELS;
+  const container = document.getElementById('importanceBars');
+  container.innerHTML = '';
+  rows.forEach(r=>{
+    const pct = (r.v*100).toFixed(0);
+    const row = document.createElement('div');
+    row.className = 'imp-row';
+    row.innerHTML = `<span class="imp-label">${labels[r.f]}</span><span class="imp-track"><span class="imp-fill" style="width:${pct}%"></span></span><span class="imp-pct">${pct}%</span>`;
+    container.appendChild(row);
+  });
+}
+
+function renderCompare(crop, input){
+  const labels = currentLang === 'hi' ? FEATURE_LABELS_HI : FEATURE_LABELS;
+  const stats = CROP_STATS[crop];
+  document.getElementById('compareTitle').textContent = t('result.compareTitle', { crop: cropName(crop) });
+  const container = document.getElementById('compareRows');
+  container.innerHTML = '';
+  // Show the 3 features that matter most globally, compared against this crop's typical range
+  const topFeatures = FEATURE_ORDER.slice().sort((a,b)=>FEATURE_IMPORTANCE[b]-FEATURE_IMPORTANCE[a]).slice(0,3);
+  const fieldIndex = { N:0, P:1, K:2, temperature:3, humidity:4, ph:5, rainfall:6 };
+  topFeatures.forEach(f=>{
+    const [min,max] = stats[f];
+    const val = input[fieldIndex[f]];
+    const inRange = val >= min && val <= max;
+    const row = document.createElement('div');
+    row.className = 'cmp-row';
+    const tagClass = inRange ? 'in-range' : 'out-range';
+    const tagText = inRange
+      ? (currentLang === 'hi' ? 'सामान्य सीमा में' : 'within typical range')
+      : (currentLang === 'hi' ? 'सामान्य सीमा से बाहर' : 'outside typical range');
+    row.innerHTML = `<span class="cmp-label">${labels[f]}</span><span class="cmp-val">${val}<span class="cmp-tag ${tagClass}">${tagText}</span></span>`;
+    container.appendChild(row);
+  });
+}
+
+function renderResults(input){
+  const ranked = predict(input);
+  const top = ranked[0];
+  const alts = ranked.slice(1,4);
+
+  document.getElementById('topCropName').textContent = cropName(top.crop);
+  document.getElementById('topCropConf').textContent = t('result.confidence', { pct: (top.prob*100).toFixed(1) });
+  document.getElementById('topCropBar').style.width = `${Math.max(top.prob*100, 4)}%`;
+  document.getElementById('topCropNote').textContent = cropNote(top.crop);
+
+  renderImportance();
+  renderCompare(top.crop, input);
+
+  const altList = document.getElementById('altList');
+  altList.innerHTML = '';
+  alts.forEach(a=>{
+    const row = document.createElement('div');
+    row.className = 'alt-item';
+    row.innerHTML = `<span class="name">${cropName(a.crop)}</span><span class="pct">${(a.prob*100).toFixed(1)}%</span>`;
+    altList.appendChild(row);
+  });
+
+  emptyState.style.display = 'none';
+  resultContent.style.display = 'block';
+}
 
 form.addEventListener('submit', function(e){
   e.preventDefault();
@@ -3128,44 +3382,87 @@ form.addEventListener('submit', function(e){
     parseFloat(document.getElementById('rainfall').value)
   ];
   if(input.some(v=>Number.isNaN(v))){
-    alert('Please fill in every field before requesting a recommendation.');
+    alert(currentLang === 'hi' ? 'कृपया सुझाव पाने से पहले सभी फ़ील्ड भरें।' : 'Please fill in every field before requesting a recommendation.');
     return;
   }
-  const ranked = predict(input);
-  const top = ranked[0];
-  const alts = ranked.slice(1,4);
+  lastInput = input;
+  renderResults(input);
+});
 
-  document.getElementById('topCropName').textContent = top.crop;
-  document.getElementById('topCropConf').textContent = `${(top.prob*100).toFixed(1)}% confidence`;
-  document.getElementById('topCropBar').style.width = `${Math.max(top.prob*100, 4)}%`;
-  document.getElementById('topCropNote').textContent = CROP_INFO[top.crop] || '';
-
-  const altList = document.getElementById('altList');
-  altList.innerHTML = '';
-  alts.forEach(a=>{
-    const row = document.createElement('div');
-    row.className = 'alt-item';
-    row.innerHTML = `<span class="name">${a.crop}</span><span class="pct">${(a.prob*100).toFixed(1)}%</span>`;
-    altList.appendChild(row);
+/* ---------- Regional presets ---------- */
+const regionSelect = document.getElementById('regionPreset');
+function populateRegions(){
+  const placeholder = regionSelect.options[0];
+  placeholder.textContent = t('form.regionPlaceholder');
+  Array.from(regionSelect.querySelectorAll('option[data-region]')).forEach(o=>o.remove());
+  REGIONS.forEach(r=>{
+    const opt = document.createElement('option');
+    opt.value = r.id;
+    opt.dataset.region = '1';
+    opt.textContent = currentLang === 'hi' ? r.hi : r.en;
+    regionSelect.appendChild(opt);
   });
+}
+populateRegions();
 
-  emptyState.style.display = 'none';
-  resultContent.style.display = 'block';
+regionSelect.addEventListener('change', function(){
+  const region = REGIONS.find(r=>r.id === this.value);
+  if(!region) return;
+  document.getElementById('temperature').value = region.temperature;
+  document.getElementById('humidity').value = region.humidity;
+  document.getElementById('rainfall').value = region.rainfall;
+});
+
+/* ---------- Language toggle ---------- */
+const langToggle = document.getElementById('langToggle');
+function applyLang(lang){
+  currentLang = lang;
+  langToggle.textContent = lang === 'hi' ? 'English' : 'हिंदी';
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    el.innerHTML = t(key);
+  });
+  populateRegions();
+  if(lastInput) renderResults(lastInput);
+}
+langToggle.addEventListener('click', function(){
+  applyLang(currentLang === 'hi' ? 'en' : 'hi');
 });
 
 /* ---------- Live weather autofill (Open-Meteo, no key required) ---------- */
 const locateBtn = document.getElementById('locateBtn');
 const locateStatus = document.getElementById('locateStatus');
 
+const LOCATE_MSG = {
+  en: {
+    noGeo: 'Geolocation is not supported by this browser.',
+    detecting: 'Detecting your location…',
+    fetching: 'Fetching current weather…',
+    applied: (t,h) => `Live weather applied (${t}°C, ${h}% humidity). Rainfall still needs your own estimate for the recent period.`,
+    fail: 'Could not fetch live weather — enter temperature and humidity manually.',
+    denied: 'Location access denied — enter temperature and humidity manually.'
+  },
+  hi: {
+    noGeo: 'यह ब्राउज़र लोकेशन सुविधा समर्थित नहीं करता।',
+    detecting: 'आपका स्थान पता किया जा रहा है…',
+    fetching: 'मौजूदा मौसम लाया जा रहा है…',
+    applied: (t,h) => `लाइव मौसम लागू किया गया (${t}°C, ${h}% नमी)। वर्षा के लिए अभी भी अपना अनुमान चाहिए।`,
+    fail: 'लाइव मौसम नहीं मिल सका — तापमान और नमी खुद भरें।',
+    denied: 'स्थान की अनुमति नहीं मिली — तापमान और नमी खुद भरें।'
+  }
+};
+
 locateBtn.addEventListener('click', function(){
+  const msg = LOCATE_MSG[currentLang];
   if(!navigator.geolocation){
-    locateStatus.textContent = 'Geolocation is not supported by this browser.';
+    locateStatus.textContent = msg.noGeo;
     return;
   }
-  locateStatus.textContent = 'Detecting your location…';
+  locateStatus.textContent = msg.detecting;
   navigator.geolocation.getCurrentPosition(async (pos)=>{
     const { latitude, longitude } = pos.coords;
-    locateStatus.textContent = 'Fetching current weather…';
+    locateStatus.textContent = msg.fetching;
     try{
       const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,precipitation`;
       const res = await fetch(url);
@@ -3174,12 +3471,12 @@ locateBtn.addEventListener('click', function(){
       const cur = data.current;
       document.getElementById('temperature').value = cur.temperature_2m;
       document.getElementById('humidity').value = cur.relative_humidity_2m;
-      locateStatus.textContent = `Live weather applied (${cur.temperature_2m}°C, ${cur.relative_humidity_2m}% humidity). Rainfall still needs your own estimate for the recent period.`;
+      locateStatus.textContent = msg.applied(cur.temperature_2m, cur.relative_humidity_2m);
     }catch(err){
-      locateStatus.textContent = 'Could not fetch live weather — enter temperature and humidity manually.';
+      locateStatus.textContent = msg.fail;
     }
   }, (err)=>{
-    locateStatus.textContent = 'Location access denied — enter temperature and humidity manually.';
+    locateStatus.textContent = msg.denied;
   });
 });
 </script>
