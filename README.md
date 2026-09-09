@@ -4,7 +4,7 @@ A single-page tool that recommends a crop for a field based on real soil and
 climate readings. No backend, no database, no account — the trained machine
 learning model runs entirely as JavaScript inside the page.
 
-**Live demo:** open `agro-ai.html` directly in a browser, or host it as a
+**Live demo:** open `https://satyam-64136.github.io/smartcrop` directly in a browser, or host it as a
 static file anywhere (GitHub Pages, Netlify, a plain S3 bucket — no build
 step required).
 
